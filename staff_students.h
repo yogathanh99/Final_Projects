@@ -2,7 +2,7 @@
 Header for student management
 */
 
-#include "DataStructures.h"
+#include "sms.h"
 
 #ifndef STAFF_STUDENTS_H
 #define STAFF_STUDENTS_H
