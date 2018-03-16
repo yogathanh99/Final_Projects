@@ -9,6 +9,7 @@ Data structures Library
 #include <fstream>
 #include <string>
 #include <vector>
+#include <sstream>
 using namespace std;
 
 enum UserTypes
@@ -40,7 +41,6 @@ struct Time
 {
 	int hours;
 	int minutes;
-	int second;
 };
 
 struct User 
@@ -87,4 +87,5 @@ struct Score
 	double labScore;
 	double finalScore;
 };
+
 #endif // !SMS_H
