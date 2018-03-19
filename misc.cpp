@@ -40,3 +40,8 @@ Time StrToTime(string s) {
 string TimeToStr(Time t) {
 	return IntToStr(t.hours, 2) + ":" + IntToStr(t.minutes, 2);
 }
+
+void Pause() {
+	cout << "Press any key to continue." << endl;
+	cin.get();
+}

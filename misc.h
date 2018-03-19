@@ -10,6 +10,7 @@ Header for miscellaneous function
 // Convert string to integer
 int StrToInt(string s);
 
+// Convert integer to string
 string IntToStr(int x, int d = 0);
 
 // Convert string ('dd/mm/yyyy' format) to Date
@@ -24,5 +25,7 @@ Time StrToTime(string s);
 // Convert Time to string ('hh:mm' format)
 string TimeToStr(Time t);
 
+// Pause the program. User can press any key to continue.
+void Pause();
 
 #endif // !MISC_H
