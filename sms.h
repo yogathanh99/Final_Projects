@@ -12,6 +12,8 @@ Data structures Library
 #include <sstream>
 using namespace std;
 
+const string PASSWORD_DEFAULT = "password";
+
 enum UserTypes
 {
 	STUDENT,
