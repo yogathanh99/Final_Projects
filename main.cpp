@@ -1,8 +1,55 @@
-#include "staff_students.h"
+#include "sms.h"
+#include "dataio.h"
+#include "all_roles.h"
+#include "screen.h"
 
-int main()
-{
+void main() {
 	vector<User> users;
-	ImportStudentFromFile("17APCS1-Students.csv", users);
-	OutputStudentToAnotherFile("OutputStudents.csv", users);
+
+	ReadStudentDataFromFile("student.csv", users);
+	ReadLecturerDataFromFile("lecturer.csv", users);
+	ReadStaffDataFromFile("staff.csv", users);
+//	cout << DateToStr(StrToDate("05/02/1923")) << endl;
+
+	
+	User currentUser;
+	bool isLoggedIn = false;
+	Screen currentScreen = HOME;
+
+	while (true) {
+		cout << "  Student Management System v1.0  " << endl;
+		cout << "----------------------------------" << endl;
+		if (currentScreen == EXIT) {			
+			break;
+		} 
+		else if (currentScreen == HOME) {
+			if (isLoggedIn == false) {
+				ShowHomeScreen_Guest(currentUser, users, isLoggedIn, currentScreen);
+			}
+			else if (currentUser.password == PASSWORD_DEFAULT) {
+				cout << "This is your first login. Please change your password to continue." << endl;
+				ChangePassword(currentUser);
+			}
+			else {
+				ShowHomeScreen_User(currentUser, users, isLoggedIn, currentScreen);
+			}
+		}
+		else if (currentScreen == MENU) {
+			if (currentUser.type == ACADEMIC_STAFF) {
+				ShowMenuScreen_Staff(currentUser, users, isLoggedIn, currentScreen);
+			}
+			else if (currentUser.type == LECTURER) {
+				ShowMenuScreen_Lecturer(currentUser, users, isLoggedIn, currentScreen);				
+			}
+			else if (currentUser.type == STUDENT) {
+				ShowMenuScreen_Student(currentUser, users, isLoggedIn, currentScreen);
+			}
+		}
+	}	
+
+	ShowExitScreen(currentUser, users, isLoggedIn, currentScreen);
+
+	WriteStudentDataToFile("test1.csv", users);
+	WriteLecturerDataToFile("test2.csv", users);
+	WriteStaffDataToFile("test3.csv", users);
 }
