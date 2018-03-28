@@ -9,7 +9,11 @@ Data structures Library
 #include <fstream>
 #include <string>
 #include <vector>
+#include <sstream>
+#include <stdlib.h>
 using namespace std;
+
+const string PASSWORD_DEFAULT = "password";
 
 enum UserTypes
 {
@@ -40,10 +44,9 @@ struct Time
 {
 	int hours;
 	int minutes;
-	int second;
 };
 
-struct User 
+struct User
 {
 	string username;
 	string fullName;
@@ -77,7 +80,7 @@ struct Presence
 	int week;
 };
 
-struct Score 
+struct Score
 {
 	string courseCode;
 	string year;
@@ -87,4 +90,5 @@ struct Score
 	double labScore;
 	double finalScore;
 };
+
 #endif // !SMS_H
