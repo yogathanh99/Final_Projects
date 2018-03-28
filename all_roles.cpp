@@ -44,11 +44,16 @@ void ChangePassword(User &currentUser) {
 	cout << "Enter new password: ";
 	string newPassword; getline(cin, newPassword);
 
+	if (newPassword == "") {
+		cout << "New password cannot be empty. Please try again." << endl;
+		return;             
+	}
 	if (newPassword == currentUser.password) {
 		cout << "New password must be different from current password. Please try again." << endl;
 		return;
 	}
-	else cout << "Password has changed successfull" << endl;
+	
+	cout << "Password has changed successfull" << endl;
 
 	currentUser.password = newPassword;
 }

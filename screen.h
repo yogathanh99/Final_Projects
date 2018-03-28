@@ -25,15 +25,5 @@ void ShowMenuScreen_Student(User &currentUser, vector<User> &users, bool &isLogg
 
 void ShowExitScreen(User &currentUser, vector<User> &users, bool &isLoggedIn, Screen &currentScreen, User &student);
 //bool checkInput(vector <User> &users);
-void AddStudent(vector<User> &users);
 
-void EditExistStudent(vector<User> &users);
-
-void ChangeClassStudent(vector <User> &users);
-
-void View_Class_List(vector<User> users);
-
-void ViewStudentList(vector<User> users);
-
-void RemoveStudent(vector<User> &users);
 #endif // !SCREEN_H
