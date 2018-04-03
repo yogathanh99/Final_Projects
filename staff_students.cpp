@@ -1,19 +1,27 @@
 #include "staff_students.h"
 
-void ImportStudentFromFile(string path, vector<User> &users)
+void ImportStudentFromFile(vector<User> &users)
 {
+	string path;
+	cout << "Enter the csv file path: ";
+	getline(cin, path, '\n');
+
 	ifstream fin;
 	fin.open(path);
 
 	if (!fin.is_open())
 	{
-		cout << "File '" << path << "' not open" << endl;;
+		cout << "No csv file with such path was found. Please try again." << endl;
+		Pause();
 		return;
 	}
+
 	string tmp, _class;
 	getline(fin, tmp, ','); //tmp=Class
 	getline(fin, _class, '\n'); //Put class into _class
 	getline(fin, tmp, '\n'); //put second line into tmp
+	
+	int studentCount = 0;
 	while (!fin.eof())
 	{
 		getline(fin, tmp, ','); //get ordinal number into tmp
@@ -23,8 +31,13 @@ void ImportStudentFromFile(string path, vector<User> &users)
 		students._class = _class;
 		students.type = STUDENT;
 		users.push_back(students);
+		
+		++studentCount;
 	}
 	fin.close();
+
+	cout << "Succesfully imported " << studentCount << " new students." << endl;
+	Pause();
 }
 
 void OutputStudentToAnotherFile(string path, vector<User> users)
