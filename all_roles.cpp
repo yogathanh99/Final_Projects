@@ -32,12 +32,14 @@ void Login(User &currentUser, vector<User> users, bool &loginSuccessful) {
 			cout << "Sucessfully logged in as '" << users[i].username << "'." << endl;
 			currentUser = users[i];
 			loginSuccessful = true;
+			Pause();
 			return;
 		}
 	}
 
 	cout << "No such combination of username and password found. Please try again." << endl;
 	loginSuccessful = false;
+	Pause();
 }
 
 void ChangePassword(User &currentUser) {
@@ -46,14 +48,32 @@ void ChangePassword(User &currentUser) {
 
 	if (newPassword == "") {
 		cout << "New password cannot be empty. Please try again." << endl;
-		return;             
+		Pause();
+		return;
 	}
 	if (newPassword == currentUser.password) {
 		cout << "New password must be different from current password. Please try again." << endl;
+		Pause();
 		return;
 	}
 	
-	cout << "Password has changed successfull" << endl;
-
 	currentUser.password = newPassword;
+
+	cout << "Password has changed successfully" << endl;
+	Pause();
+}
+
+void ViewInfo(User &currentUser) {
+	system("CLS");
+	cout << "ID: " << currentUser.username << endl;
+	cout << "Name: " << currentUser.fullName << endl;
+	cout << "Email: " << currentUser.email << endl;
+	cout << "Phone: " << currentUser.mobilePhone << endl;
+	if (currentUser.type == 0) cout << "Class: " << currentUser._class << endl;
+	cout << "Type: ";
+	if (currentUser.type == 0) cout << "Student" << endl;
+	else if (currentUser.type == 1) cout << "Academic staff" << endl;
+	else cout << "Lecturer" << endl;
+	cout << endl;
+	Pause();
 }

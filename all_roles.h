@@ -13,4 +13,7 @@ void Login(User &currentUser, vector<User> users, bool &loginSuccessful);
 // Change user's password
 void ChangePassword(User &currentUser);
 
+//View information of current user
+void ViewInfo(User &currentUser);
+
 #endif // ALL_ROLES_H
