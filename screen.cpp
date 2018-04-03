@@ -4,8 +4,10 @@ Implementation for all menu showing function
 
 #include "screen.h"
 #include "all_roles.h"
+#include "staff_students.h"
+#include "staff_course.h"
 
-void ShowHomeScreen_Guest(User &currentUser, vector<User> &users, bool &isLoggedIn, Screen &currentScreen, User &student) {
+void ShowHomeScreen_Guest(User &currentUser, vector<User> &users, vector<Course> &courses, bool &isLoggedIn, Screen &currentScreen, User &student) {
 	string action;
 
 	cout << "1. Login" << endl;
@@ -21,10 +23,11 @@ void ShowHomeScreen_Guest(User &currentUser, vector<User> &users, bool &isLogged
 	}
 	else {
 		cout << "Entered action is not legit. Please try again." << endl;
+		Pause();
 	}
 }
 
-void ShowHomeScreen_User(User &currentUser, vector<User> &users, bool &isLoggedIn, Screen &currentScreen, User &student) {
+void ShowHomeScreen_User(User &currentUser, vector<User> &users, vector<Course> &courses, bool &isLoggedIn, Screen &currentScreen, User &student) {
 	string action;
 	cout << "1. Show Menu" << endl;
 	cout << "2. View info" << endl;
@@ -39,21 +42,7 @@ void ShowHomeScreen_User(User &currentUser, vector<User> &users, bool &isLoggedI
 	}
 	else if (action == "2") {
 		// View info
-		for (int i = 0; i < users.size(); ++i) {
-			if (users[i].username == currentUser.username) {
-				system("CLS");
-				cout << "ID: " << users[i].username << endl;
-				cout << "Name: " << users[i].fullName << endl;
-				cout << "Email: " << users[i].email << endl;
-				cout << "Phone: " << users[i].mobilePhone << endl;
-				if (users[i].type == 0) cout << "Class: " << users[i]._class << endl;
-				cout << "Type: ";
-				if (users[i].type == 0) cout << "Student" << endl;
-				else if (users[i].type == 1) cout << "Academic staff" << endl;
-				else cout << "Lecturer" << endl;
-				cout << endl;
-			}
-		}
+		ViewInfo(currentUser);
 	}
 	else if (action == "3") {
 		// Change password
@@ -65,11 +54,11 @@ void ShowHomeScreen_User(User &currentUser, vector<User> &users, bool &isLoggedI
 	}
 	else {
 		cout << "Entered action is not legit. Please try again." << endl;
-		system("CLS");
+		Pause();
 	}
 }
 
-void ShowMenuScreen_Staff(User &currentUser, vector<User> &users, bool &isLoggedIn, Screen &currentScreen, User &student) {
+void ShowMenuScreen_Staff(User &currentUser, vector<User> &users, vector<Course> &courses, bool &isLoggedIn, Screen &currentScreen, User &student) {
 	string action;
 	cout << "1. Import students of a class from a csv file" << endl;
 	cout << "2. Add a new student to a class" << endl;
@@ -103,6 +92,8 @@ void ShowMenuScreen_Staff(User &currentUser, vector<User> &users, bool &isLogged
 
 	if (action == "1") {
 		// Import students of a class from a csv file
+		system("CLS");
+		ImportStudentFromFile(users);
 	}
 	else if (action == "2") {
 		// Add a new student to a class
@@ -139,6 +130,8 @@ void ShowMenuScreen_Staff(User &currentUser, vector<User> &users, bool &isLogged
 	}
 	else if (action == "9") {
 		// Import courses from a csv file
+		system("CLS");
+		ImportCourseFromFile(courses);
 	}
 	else if (action == "10") {
 		// Add a new course
@@ -184,10 +177,11 @@ void ShowMenuScreen_Staff(User &currentUser, vector<User> &users, bool &isLogged
 	}
 	else {
 		cout << "Entered action is not legit. Please try again." << endl;
+		Pause();
 	}
 }
 
-void ShowMenuScreen_Lecturer(User &currentUser, vector<User> &users, bool &isLoggedIn, Screen &currentScreen, User &student) {
+void ShowMenuScreen_Lecturer(User &currentUser, vector<User> &users, vector<Course> &courses, bool &isLoggedIn, Screen &currentScreen, User &student) {
 	string action;
 
 	cout << "1. Import scoreboard of a course (midterm, final, lab, bonus)" << endl;
@@ -211,10 +205,11 @@ void ShowMenuScreen_Lecturer(User &currentUser, vector<User> &users, bool &isLog
 	}
 	else {
 		cout << "Entered action is not legit. Please try again." << endl;
+		Pause();
 	}
 }
 
-void ShowMenuScreen_Student(User &currentUser, vector<User> &users, bool &isLoggedIn, Screen &currentScreen, User &student) {
+void ShowMenuScreen_Student(User &currentUser, vector<User> &users, vector<Course> &courses, bool &isLoggedIn, Screen &currentScreen, User &student) {
 	string action;
 
 	cout << "1. Check-in" << endl;
@@ -242,9 +237,10 @@ void ShowMenuScreen_Student(User &currentUser, vector<User> &users, bool &isLogg
 	}
 	else {
 		cout << "Entered action is not legit. Please try again." << endl;
+		Pause();
 	}
 }
 
-void ShowExitScreen(User &currentUser, vector<User> &users, bool &isLoggedIn, Screen &currentScreen, User &student) {
+void ShowExitScreen(User &currentUser, vector<User> &users, vector<Course> &courses, bool &isLoggedIn, Screen &currentScreen, User &student) {
 	cout << "Thanks for using the software!" << endl;
 }
