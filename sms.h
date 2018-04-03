@@ -69,6 +69,7 @@ struct Course
 	Time from;
 	Time to;
 	DaysOfWeek daysOfWeek;
+	bool isAvailable;
 };
 
 struct Presence
