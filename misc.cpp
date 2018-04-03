@@ -41,6 +41,40 @@ string TimeToStr(Time t) {
 	return IntToStr(t.hours, 2) + ":" + IntToStr(t.minutes, 2);
 }
 
+DaysOfWeek StrToDow(string s) {
+	if (s == "Monday") return MONDAY;
+	if (s == "Tuesday") return TUESDAY;
+	if (s == "Wednesday") return WEDNESDAY;
+	if (s == "Thursday") return THURSDAY;
+	if (s == "Friday") return FRIDAY;
+	if (s == "Saturday") return SATURDAY;
+	if (s == "Sunday") return SUNDAY;
+	return MONDAY;
+}
+
+string DowToStr(DaysOfWeek dow) {
+	if (dow == MONDAY) return "Monday";
+	if (dow == TUESDAY) return "Tuesday";
+	if (dow == WEDNESDAY) return "Wednesday";
+	if (dow == THURSDAY) return "Thursday";
+	if (dow == FRIDAY) return "Friday";
+	if (dow == SATURDAY) return "Saturday";
+	if (dow == SUNDAY) return "Sunday";
+	return "Monday";
+}
+
+bool StrToBool(string s) {
+	if (s == "True") return true;
+	if (s == "False") return false;
+	return false;
+}
+
+string BoolToStr(bool b) {
+	if (b == true) return "True";
+	if (b == false) return "False";
+	return "False";
+}
+
 void Pause() {
 	cout << "Press any key to continue." << endl;
 	cin.get();

@@ -25,6 +25,18 @@ Time StrToTime(string s);
 // Convert Time to string ('hh:mm' format)
 string TimeToStr(Time t);
 
+// Convert string to DaysOfWeek
+DaysOfWeek StrToDow(string s);
+
+// Convert DaysOfWeek to string
+string DowToStr(DaysOfWeek dow);
+
+// Convert string to bool
+bool StrToBool(string s);
+
+// Convert bool to string
+string BoolToStr(bool b);
+
 // Pause the program. User can press any key to continue.
 void Pause();
 
