@@ -3,6 +3,7 @@ Implementation for data reading and writing
 */
 
 #include "dataio.h"
+#include "misc.h"
 
 void ReadStudentDataFromFile(string path, vector<User> &users) {
 	ifstream fin;
@@ -92,6 +93,42 @@ fin.close();
 }
 */
 
+void ReadCourseDataFromFile(string path, vector<Course> &courses) {
+	ifstream fin;
+	fin.open(path);
+	if (!fin.is_open())
+		return;
+
+	string tmp;
+	while (!fin.eof()) {
+		Course course;
+
+		getline(fin, course.courseCode, ',');
+		getline(fin, course.year, ',');
+		getline(fin, tmp, ',');
+		course.semester = StrToInt(tmp);
+		getline(fin, course.courseName, ',');
+		getline(fin, course.lecturerUsername, ',');
+
+		getline(fin, tmp, ',');
+		course.startAt = StrToDate(tmp);
+		getline(fin, tmp, ',');
+		course.endAt = StrToDate(tmp);
+		getline(fin, tmp, ',');
+		course.from = StrToTime(tmp);
+		getline(fin, tmp, ',');
+		course.to = StrToTime(tmp);
+		getline(fin, tmp, ',');
+		course.daysOfWeek = StrToDow(tmp);
+		getline(fin, tmp, '\n');
+		course.isAvailable = StrToBool(tmp);
+
+		courses.push_back(course);
+	}
+
+	fin.close();
+}
+
 void ReadPresenceDataFromFile(string path, vector<Presence> &presences);
 
 void ReadScoreDataFromFile(string path, vector<Score> &score);
@@ -149,6 +186,29 @@ void WriteStaffDataToFile(string path, vector<User> &users) {
 			fout << users[i].mobilePhone << ',';
 			fout << users[i].password << endl;
 		}
+	}
+
+	fout.close();
+}
+
+void WriteCourseDataToFile(string path, vector<Course> &courses) {
+	ofstream fout;
+	fout.open(path);
+	if (!fout.is_open())
+		return;
+
+	for (int i = 0; i < courses.size(); ++i) {
+		fout << courses[i].courseCode << ",";
+		fout << courses[i].year << ",";
+		fout << courses[i].semester << ",";
+		fout << courses[i].courseName << ",";
+		fout << courses[i].lecturerUsername << ",";
+		fout << DateToStr(courses[i].startAt) << ",";
+		fout << DateToStr(courses[i].endAt) << ",";
+		fout << TimeToStr(courses[i].from) << ",";
+		fout << TimeToStr(courses[i].to) << ",";
+		fout << DowToStr(courses[i].daysOfWeek) << ",";
+		fout << BoolToStr(courses[i].isAvailable) << endl;
 	}
 
 	fout.close();
