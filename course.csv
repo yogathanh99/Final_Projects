@@ -1,7 +1,7 @@
-CS161,2017-2018,1,Intro to Computer Science I,dbtien,05/09/2017,23/09/2017,09:30,11:30,Saturday
-MH251,2017-2018,1,Calculus I,tttvan,05/09/2017,23/09/2017,13:30,17:30,Friday
-CS162,2017-2018,2,Intro to Computer Science II,dbtien,02/02/2017,21/04/2017,07:30,09:30,Tuesday
-CM101,2017-2018,1,Communication Management,dnvu,05/09/2017,23/11/2017,07:30,11:30,Friday
-CS161,2016-2017,1,Intro to Computer Science I,dbtien,05/09/2016,23/09/2016,09:30,11:30,Saturday
-MH251,2016-2017,1,Calculus I,tttvan,05/09/2016,23/09/2016,13:30,17:30,Thursday
-CS162,2016-2017,2,Intro to Computer Science II,dbtien,01/02/2016,19/09/2016,11:30,13:30,Wednesday
+CS161,2017-2018,1,Intro to Computer Science I,dbtien,05/09/2017,23/09/2017,09:30,11:30,Saturday,True
+MH251,2017-2018,1,Calculus I,tttvan,05/09/2017,23/09/2017,13:30,17:30,Friday,True
+CS162,2017-2018,2,Intro to Computer Science II,dbtien,02/02/2017,21/04/2017,07:30,09:30,Tuesday,True
+CM101,2017-2018,1,Communication Management,dnvu,05/09/2017,23/11/2017,07:30,11:30,Friday,True
+CS161,2016-2017,1,Intro to Computer Science I,dbtien,05/09/2016,23/09/2016,09:30,11:30,Saturday,True
+MH251,2016-2017,1,Calculus I,tttvan,05/09/2016,23/09/2016,13:30,17:30,Thursday,True
+CS162,2016-2017,2,Intro to Computer Science II,dbtien,01/02/2016,19/09/2016,11:30,13:30,Wednesday,True
