@@ -6,7 +6,8 @@ Header for use-cases of academic staff about course managing
 #define STAFF_COURSE_H
 
 #include "sms.h"
+#include "misc.h"
 
-void ImportCourseFromFile(string path, vector<Course> &courses);
+void ImportCourseFromFile(vector<Course> &courses);
 
 #endif // STAFF_COURSE_H
