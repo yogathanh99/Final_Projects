@@ -57,10 +57,10 @@ void main() {
 		}
 	}
 
-	ShowExitScreen(currentUser, users, courses, isLoggedIn, currentScreen, student);
-
 	WriteStudentDataToFile("test1.csv", users);
 	WriteLecturerDataToFile("test2.csv", users);
 	WriteStaffDataToFile("test3.csv", users);
 	WriteCourseDataToFile("test4.csv", courses);
+
+	ShowExitScreen(currentUser, users, courses, isLoggedIn, currentScreen, student);
 }
