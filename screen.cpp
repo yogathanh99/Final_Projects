@@ -117,6 +117,9 @@ void ShowMenuScreen_Staff(User &currentUser, vector<User> &users, vector<Course>
 	}
 	else if (action == "6") {
 		// Add a new empty class
+		system("CLS");
+		cout << "You can add a new class by adding a new student belong to that class." << endl;
+		Pause();
 	}
 	else if (action == "7") {
 		// View list of classes
