@@ -73,8 +73,7 @@ void AddStudent(vector<User> &users) {
 	getline(cin, student.email);
 	cout << "Input mobile phone: ";
 	getline(cin, student.mobilePhone);
-	cout << "Input password: ";
-	getline(cin, student.password);
+	student.password = PASSWORD_DEFAULT;
 	student.type = STUDENT;
 	users.push_back(student);
 }
@@ -147,7 +146,7 @@ void EditExistStudent(vector<User> &users) {
 			cin.ignore(1000, '\n');
 		}
 		else
-			cout << "Invaild: " << endl;
+			cout << "Entered action is not legit. Please try again." << endl;
 	}
 }
 
@@ -158,7 +157,7 @@ void ChangeClassStudent(vector <User> &users)
 	string id, _class;
 
 	cout << "0. Do not move student: ";
-	cout << "\n1. Move all students:  ";
+	cout << "\n1. Move all students: ";
 	cout << "\n2. Move a student: ";
 
 	cout << "\nWhat do you want to pick: ";
@@ -166,8 +165,8 @@ void ChangeClassStudent(vector <User> &users)
 	cin.ignore(1000, '\n');
 
 	if (pick == 0) {
-		cout << "Do not move students: " << endl;
-		cin.ignore(1000,'\n');
+		cout << "Action cancelled." << endl;
+		Pause();
 	}
 	else if (pick == 1) {
 		cout << "Input old class: ";
@@ -178,7 +177,7 @@ void ChangeClassStudent(vector <User> &users)
 		for (int i = 0; i < users.size(); ++i)
 			if (users[i]._class == _oldclass) users[i]._class = _class;
 		cout << "Changed successfully" << endl;
-		cin.ignore(1000, '\n');
+		Pause();
 	}
 	else if (pick == 2)
 	{
@@ -196,11 +195,11 @@ void ChangeClassStudent(vector <User> &users)
 			}
 		}
 		if (check) {
-			cout << "Input new class:"; 
+			cout << "Input new class: "; 
 			getline(cin, _class);
 			users[i]._class = _class;
 			cout << "Changed successfully" << endl;
-			cin.ignore(1000, '\n');
+			Pause();
 		}
 	}
 }
@@ -213,6 +212,7 @@ void RemoveStudent(vector<User> &users) {
 		if (users[i].username == ID) users.erase(users.begin() + i);
 	}
 	cout << "Changed successfully" << endl;
+	Pause();
 }
 
 void View_Class_List(vector<User> users)
@@ -248,5 +248,5 @@ void ViewStudentList(vector<User> users)
 		if (_class == users[i]._class)
 			cout << users[i].username << " " << users[i].fullName << endl;
 	}
-	cin.ignore(1000, '\n');
+	Pause();
 }
