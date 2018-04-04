@@ -19,6 +19,7 @@ void ImportCourseFromFile(vector<Course> &courses) {
 
 	int courseCount = 0;
 	string tmp;
+	getline(fin, tmp, '\n');
 	while (!fin.eof()) {
 		Course course;
 
@@ -27,12 +28,14 @@ void ImportCourseFromFile(vector<Course> &courses) {
 		getline(fin, tmp, ',');
 		course.semester = StrToInt(tmp);
 		getline(fin, course.courseName, ',');
-		getline(fin, course.lecturerUsername, ',');
-
+		getline(fin, course.lecturerUsername, '\n');
+		
 		course.isAvailable = false;
 
-		courses.push_back(course);
-		++courseCount;
+		if (course.courseCode != "") {
+			courses.push_back(course);
+			++courseCount;
+		}
 	}
 
 	fin.close();
