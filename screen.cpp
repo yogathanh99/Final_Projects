@@ -138,15 +138,23 @@ void ShowMenuScreen_Staff(User &currentUser, vector<User> &users, vector<Course>
 	}
 	else if (action == "10") {
 		// Add a new course
+		system("CLS");
+		AddCourse(courses);
 	}
 	else if (action == "11") {
 		// Edit an existing course
+		system("CLS");
+		EditExistCourse(courses);
 	}
 	else if (action == "12") {
 		// Remove a course
+		system("CLS");
+		RemoveCourse(courses);
 	}
 	else if (action == "13") {
 		// View list of courses
+		system("CLS");
+		View_Courses_List(courses);
 	}
 	else if (action == "14") {
 		// Import courses' schedules from a csv file
