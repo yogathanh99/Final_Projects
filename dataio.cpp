@@ -20,8 +20,9 @@ void ReadStudentDataFromFile(string path, vector<User> &users) {
 		getline(fin, student.password, ',');
 		getline(fin, student._class, '\n');
 		student.type = STUDENT;
-
-		users.push_back(student);
+		
+		if (student.username != "")
+			users.push_back(student);
 	}
 
 	fin.close();
@@ -42,7 +43,8 @@ void ReadLecturerDataFromFile(string path, vector<User> &users) {
 		getline(fin, lecturer.password, '\n');
 		lecturer.type = LECTURER;
 
-		users.push_back(lecturer);
+		if (lecturer.username != "")
+			users.push_back(lecturer);
 	}
 
 	fin.close();
@@ -63,7 +65,8 @@ void ReadStaffDataFromFile(string path, vector<User> &users) {
 		getline(fin, staff.password, '\n');
 		staff.type = ACADEMIC_STAFF;
 
-		users.push_back(staff);
+		if (staff.username != "")
+			users.push_back(staff);
 	}
 
 	fin.close();
@@ -123,7 +126,8 @@ void ReadCourseDataFromFile(string path, vector<Course> &courses) {
 		getline(fin, tmp, '\n');
 		course.isAvailable = StrToBool(tmp);
 
-		courses.push_back(course);
+		if (course.courseCode != "") 
+			courses.push_back(course);
 	}
 
 	fin.close();
