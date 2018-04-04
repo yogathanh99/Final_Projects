@@ -25,14 +25,18 @@ void ImportStudentFromFile(vector<User> &users)
 	while (!fin.eof())
 	{
 		getline(fin, tmp, ','); //get ordinal number into tmp
-		User students;
-		getline(fin, students.username, ','); //get ID
-		getline(fin, students.fullName, '\n'); //get fullname
-		students._class = _class;
-		students.type = STUDENT;
-		users.push_back(students);
-		
-		++studentCount;
+		User student;
+		getline(fin, student.username, ','); //get ID
+		getline(fin, student.fullName, ','); //get fullname
+		getline(fin, student.email, ','); //get email
+		getline(fin, student.mobilePhone, '\n'); //get phone number
+		student.password = PASSWORD_DEFAULT;
+		student._class = _class;
+		student.type = STUDENT;
+		if (tmp != "") {
+			users.push_back(student);
+			++studentCount;
+		}
 	}
 	fin.close();
 
@@ -106,7 +110,7 @@ void EditExistStudent(vector<User> &users) {
 			cout << "Input new full name: ";
 			getline(cin, fullname);
 			users[i].fullName = fullname;
-			cout << "Changed successful" << endl;
+			cout << "Changed successfully" << endl;
 			cin.ignore(1000, '\n');
 		}
 
@@ -115,7 +119,7 @@ void EditExistStudent(vector<User> &users) {
 			cout << "Input new mail: ";
 			getline(cin, mail);
 			users[i].email = mail;
-			cout << "Changed Successfull" << endl;
+			cout << "Changed Successfully" << endl;
 			cin.ignore(1000, '\n');
 		}
 		else if (pick == 2) {
@@ -123,7 +127,7 @@ void EditExistStudent(vector<User> &users) {
 			cout << "Input mobile phone: ";
 			getline(cin, phone);
 			users[i].mobilePhone = phone;
-			cout << "Changed Successfull" << endl;
+			cout << "Changed Successfully" << endl;
 			cin.ignore(1000, '\n');
 		}
 		else if (pick == 3) {
@@ -131,7 +135,7 @@ void EditExistStudent(vector<User> &users) {
 			cout << "Input new password: ";
 			getline(cin, password);
 			users[i].password = password;
-			cout << "Changed Successfull" << endl;
+			cout << "Changed Successfully" << endl;
 			cin.ignore(1000, '\n');
 		}
 		else if (pick == 4) {
@@ -139,7 +143,7 @@ void EditExistStudent(vector<User> &users) {
 			cout << "Input new class: ";
 			getline(cin, _class);
 			users[i]._class = _class;
-			cout << "Changed Successfull" << endl;
+			cout << "Changed Successfully" << endl;
 			cin.ignore(1000, '\n');
 		}
 		else
@@ -173,7 +177,7 @@ void ChangeClassStudent(vector <User> &users)
 		getline(cin, _class);
 		for (int i = 0; i < users.size(); ++i)
 			if (users[i]._class == _oldclass) users[i]._class = _class;
-		cout << "Changed successfull" << endl;
+		cout << "Changed successfully" << endl;
 		cin.ignore(1000, '\n');
 	}
 	else if (pick == 2)
@@ -195,7 +199,7 @@ void ChangeClassStudent(vector <User> &users)
 			cout << "Input new class:"; 
 			getline(cin, _class);
 			users[i]._class = _class;
-			cout << "Changed successfull" << endl;
+			cout << "Changed successfully" << endl;
 			cin.ignore(1000, '\n');
 		}
 	}
@@ -208,7 +212,7 @@ void RemoveStudent(vector<User> &users) {
 	for (int i = 0; i < users.size(); ++i) {
 		if (users[i].username == ID) users.erase(users.begin() + i);
 	}
-	cout << "Changed successfull" << endl;
+	cout << "Changed successfully" << endl;
 }
 
 void View_Class_List(vector<User> users)
@@ -216,7 +220,18 @@ void View_Class_List(vector<User> users)
 	int i;
 	for (i = 0; i < users.size(); i++)
 	{
-		if (users[i].type==STUDENT) cout << "Class: " << users[i]._class<<endl;
+		if (users[i].type == STUDENT) {
+			bool isDuplicate = false;
+			int j;
+			for (j = 0; j < i; ++j) {
+				if (users[i]._class == users[j]._class) {
+					isDuplicate = true;
+					break;
+				}
+			}
+			if (!isDuplicate)
+				cout << "Class: " << users[i]._class << endl;
+		}
 	}
 	cin.ignore(1000, '\n');
 }

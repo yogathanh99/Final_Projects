@@ -16,7 +16,7 @@ void AddStudent(vector<User> &users);
 
 void EditExistStudent(vector<User> &users);
 
-void ChangeClassStudent(vector <User> &users);
+void ChangeClassStudent(vector<User> &users);
 
 void View_Class_List(vector<User> users);
 
