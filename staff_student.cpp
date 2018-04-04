@@ -1,4 +1,4 @@
-﻿/*
+/*
 Implementation for use-cases of academic staff about student managing
 */
 
@@ -29,7 +29,7 @@ void importStudentsFromFile(string path, vector<User> &users) {
 }
 
 
-
+	
 void EditStudent(vector <User> &users, int count)
 {
 	string id;
@@ -50,11 +50,12 @@ void EditStudent(vector <User> &users, int count)
 
 		cout << "\nWhat do you want to change: ";
 		cin >> pick;
+      
+		
+		while (!checkInput(users));
 
 
-    while(!checkInput(users));
-
-          if (pick == 0){
+            if (pick == 0){
 				cout << " input new full name: " << endl;
 				getline(cin, fullname, ' ');
 			}
@@ -79,11 +80,11 @@ void EditStudent(vector <User> &users, int count)
 				cin.ignore(2000, '\n');
 				cout << " Input new class: " << endl;
 				getline(cin, _class);
-
+				
 			}
 			else
 				cout << "invaild: " << endl;
-
+		
 }
 void ChangeClassStudent(vector <User> &users)
 {
@@ -98,6 +99,8 @@ void ChangeClassStudent(vector <User> &users)
 
 	cout << "\nWhat do you want to pick: " << endl;
 	cin >> pick;
+	
+
 
 	if (pick == 0){
 		cout << "Do not move students: " <<endl;
@@ -105,35 +108,36 @@ void ChangeClassStudent(vector <User> &users)
 	}
 
 	else if (pick == 1){
-		cout << "Input new class: ";
+		cout << "Input new class: "; 
 		cin >> _class;
-
+		
 	}
-    else if (pick == 2)
+
+	else if (pick == 2)
 	{
 
         while (!checkInput(users));
 		cout << "input class:"; cin >> _class;
-
+		
 	}
 }
 bool checkInput(vector <User> &users)
 {
-
-
+	
+	
 	int i;
 	string id;
 
 	cout << "Input id: ";
 	cin >> id;
 	for (i = 0; i < users.size(); i++)
-
-
+	
+		
 		if ((id == users[i].username) && (users[i].type == STUDENT))
 		{
 			return true;
 		}return false;
-
+	
 
 }
 void View_Class_List(vector<User> users)
@@ -143,7 +147,7 @@ void View_Class_List(vector<User> users)
 		cout << users[i]._class;
 		break;
 	}
-
+	
 }
 
 void Addemptyclass(vector <User> &users)
@@ -151,7 +155,7 @@ void Addemptyclass(vector <User> &users)
 	User x;
 	cout << "\nInput new class: ";
 	getline(cin, x._class);
-
+	
 }
 void ViewStudentList(vector<User> &users)
 {
@@ -163,28 +167,28 @@ void ViewStudentList(vector<User> &users)
 	getline(cin, _class);
 
     for (int i = 0; i < users.size(); i++)
-
+ 
 	   if (_class == users[i]._class)
 
 		cout << users[i].username << " " << users[i].fullName << endl;
 
 }
+		
+
+		
+	
+	
+	
 
 
 
 
+	
+	
+	
 
 
 
 
-
-
-
-
-
-
-
-
-
-
+	
 
