@@ -29,8 +29,6 @@ void ImportCourseFromFile(vector<Course> &courses) {
 		course.semester = StrToInt(tmp);
 		getline(fin, course.courseName, ',');
 		getline(fin, course.lecturerUsername, '\n');
-		
-		course.isAvailable = false;
 
 		if (course.courseCode != "") {
 			courses.push_back(course);
