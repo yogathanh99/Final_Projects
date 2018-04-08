@@ -111,20 +111,7 @@ void ReadCourseDataFromFile(string path, vector<Course> &courses) {
 		getline(fin, tmp, ',');
 		course.semester = StrToInt(tmp);
 		getline(fin, course.courseName, ',');
-		getline(fin, course.lecturerUsername, ',');
-
-		getline(fin, tmp, ',');
-		course.startAt = StrToDate(tmp);
-		getline(fin, tmp, ',');
-		course.endAt = StrToDate(tmp);
-		getline(fin, tmp, ',');
-		course.from = StrToTime(tmp);
-		getline(fin, tmp, ',');
-		course.to = StrToTime(tmp);
-		getline(fin, tmp, ',');
-		course.daysOfWeek = StrToDow(tmp);
-		getline(fin, tmp, '\n');
-		course.isAvailable = StrToBool(tmp);
+		getline(fin, course.lecturerUsername, '\n');
 
 		if (course.courseCode != "") 
 			courses.push_back(course);
@@ -133,9 +120,91 @@ void ReadCourseDataFromFile(string path, vector<Course> &courses) {
 	fin.close();
 }
 
-void ReadPresenceDataFromFile(string path, vector<Presence> &presences);
+void ReadScheduleDataFromFile(string path, vector<Schedule> &schedules) {
+	ifstream fin;
+	fin.open(path);
+	if (!fin.is_open())
+		return;
 
-void ReadScoreDataFromFile(string path, vector<Score> &score);
+	string tmp;
+	while (!fin.eof()) {
+		Schedule schedule;
+
+		getline(fin, schedule.courseCode, ',');
+		getline(fin, schedule.year, ',');
+		getline(fin, tmp, ',');
+		schedule.semester = StrToInt(tmp);
+
+		getline(fin, tmp, ',');
+		schedule.startAt = StrToDate(tmp);
+		getline(fin, tmp, ',');
+		schedule.endAt = StrToDate(tmp);
+		getline(fin, tmp, ',');
+		schedule.from = StrToTime(tmp);
+		getline(fin, tmp, ',');
+		schedule.to = StrToTime(tmp);
+		getline(fin, tmp, '\n');
+		schedule.daysOfWeek = StrToDow(tmp);
+
+		if (schedule.courseCode != "")
+			schedules.push_back(schedule);
+	}
+
+	fin.close();
+}
+
+void ReadPresenceDataFromFile(string path, vector<Presence> &presences) {
+	ifstream fin;
+	fin.open(path);
+	if (!fin.is_open())
+		return;
+
+	string tmp;
+	while (!fin.eof()) {
+		Presence presence;
+		getline(fin, presence.courseCode, ',');
+		getline(fin, presence.year, ',');
+		getline(fin, tmp, ',');
+		presence.semester = StrToInt(tmp);
+		getline(fin, presence.studentId, ',');
+		getline(fin, tmp, '\n');
+		presence.week = StrToInt(tmp);
+
+		if (presence.courseCode != "")
+			presences.push_back(presence);
+	}
+
+	fin.close();
+}
+
+void ReadScoreDataFromFile(string path, vector<Score> &scores) {
+	ifstream fin;
+	fin.open(path);
+	if (!fin.is_open())
+		return;
+
+	string tmp;
+	while (!fin.eof()) {
+		Score score;
+		getline(fin, score.courseCode, ',');
+		getline(fin, score.year, ',');
+		getline(fin, tmp, ',');
+		score.semester = StrToInt(tmp);
+		getline(fin, score.studentId, ',');
+
+		getline(fin, tmp, ',');
+		score.midtermScore = StrToDouble(tmp);
+		getline(fin, tmp, ',');
+		score.labScore = StrToDouble(tmp);
+		getline(fin, tmp, '\n');
+		score.finalScore = StrToDouble(tmp);
+
+		if (score.courseCode != "")
+			scores.push_back(score);
+	}
+
+	fin.close();
+}
 
 void WriteStudentDataToFile(string path, vector<User> &users) {
 	ofstream fout;
@@ -206,14 +275,65 @@ void WriteCourseDataToFile(string path, vector<Course> &courses) {
 		fout << courses[i].year << ",";
 		fout << courses[i].semester << ",";
 		fout << courses[i].courseName << ",";
-		fout << courses[i].lecturerUsername << ",";
-		fout << DateToStr(courses[i].startAt) << ",";
-		fout << DateToStr(courses[i].endAt) << ",";
-		fout << TimeToStr(courses[i].from) << ",";
-		fout << TimeToStr(courses[i].to) << ",";
-		fout << DowToStr(courses[i].daysOfWeek) << ",";
-		fout << BoolToStr(courses[i].isAvailable) << endl;
+		fout << courses[i].lecturerUsername << endl;
 	}
 
 	fout.close();
 }
+
+void WriteScheduleDataToFile(string path, vector<Schedule> &schedules) {
+	ofstream fout;
+	fout.open(path);
+	if (!fout.is_open())
+		return;
+
+	for (int i = 0; i < schedules.size(); ++i) {
+		fout << schedules[i].courseCode << ",";
+		fout << schedules[i].year << ",";
+		fout << schedules[i].semester << ",";
+		fout << DateToStr(schedules[i].startAt) << ",";
+		fout << DateToStr(schedules[i].endAt) << ",";
+		fout << TimeToStr(schedules[i].from) << ",";
+		fout << TimeToStr(schedules[i].to) << ",";
+		fout << DowToStr(schedules[i].daysOfWeek) << endl;
+	}
+
+	fout.close();
+}
+
+void WritePresenceDataToFile(string path, vector<Presence> &presences) {
+	ofstream fout;
+	fout.open(path);
+	if (!fout.is_open())
+		return;
+
+	for (int i = 0; i < presences.size(); ++i) {
+		fout << presences[i].courseCode << ",";
+		fout << presences[i].year << ",";
+		fout << presences[i].semester << ",";
+		fout << presences[i].studentId << ",";
+		fout << presences[i].week << endl;
+	}
+
+	fout.close();
+}
+
+void WriteScoreDataToFile(string path, vector<Score> &scores) {
+	ofstream fout;
+	fout.open(path);
+	if (!fout.is_open())
+		return;
+
+	for (int i = 0; i < scores.size(); ++i) {
+		fout << scores[i].courseCode << ",";
+		fout << scores[i].year << ",";
+		fout << scores[i].semester << ",";
+		fout << scores[i].studentId << ",";
+		fout << scores[i].midtermScore << ",";
+		fout << scores[i].labScore << ",";
+		fout << scores[i].finalScore << endl;
+	}
+
+	fout.close();
+}
+
