@@ -6,11 +6,22 @@
 void main() {
 	vector<User> users;
 	vector<Course> courses;
+	vector<Schedule> schedules;
+	vector<Presence> presences;
+	vector<Score> scores;
 
 	ReadStudentDataFromFile("student.csv", users);
 	ReadLecturerDataFromFile("lecturer.csv", users);
 	ReadStaffDataFromFile("staff.csv", users);
 	ReadCourseDataFromFile("course.csv", courses);
+	ReadScheduleDataFromFile("schedule.csv", schedules);
+	ReadPresenceDataFromFile("presence.csv", presences);
+	ReadScoreDataFromFile("score.csv", scores);
+
+	//ReadStudentDataFromFile("test1.csv", users);
+	//ReadLecturerDataFromFile("test2.csv", users);
+	//ReadStaffDataFromFile("test3.csv", users);
+	//ReadCourseDataFromFile("test4.csv", courses);
 
 	User currentUser, student;
 	bool isLoggedIn = false;
@@ -25,7 +36,7 @@ void main() {
 		}
 		else if (currentScreen == HOME) {
 			if (isLoggedIn == false) {
-				ShowHomeScreen_Guest(currentUser, users, courses, isLoggedIn, currentScreen, student);
+				ShowHomeScreen_Guest(currentUser, users, courses, schedules, presences, scores, isLoggedIn, currentScreen, student);
 			}
 			else if (currentUser.password == PASSWORD_DEFAULT) {
 				cout << "This is your first login. Please change your password to continue." << endl;
@@ -35,7 +46,7 @@ void main() {
 				}
 			}
 			else {
-				ShowHomeScreen_User(currentUser, users, courses, isLoggedIn, currentScreen, student);
+				ShowHomeScreen_User(currentUser, users, courses, schedules, presences, scores, isLoggedIn, currentScreen, student);
 				for (int i = 0; i < users.size(); ++i) {
 					if (currentUser.username == users[i].username) users[i].password = currentUser.password;
 				}
@@ -43,16 +54,16 @@ void main() {
 		}
 		else if (currentScreen == MENU) {
 			if (currentUser.type == ACADEMIC_STAFF) {
-				ShowMenuScreen_Staff(currentUser, users, courses, isLoggedIn, currentScreen, student);
+				ShowMenuScreen_Staff(currentUser, users, courses, schedules, presences, scores, isLoggedIn, currentScreen, student);
 				for (int i = 0; i < users.size(); ++i) {
 					if (users[i].username == student.username) users[i] = student;
 				}
 			}
 			else if (currentUser.type == LECTURER) {
-				ShowMenuScreen_Lecturer(currentUser, users, courses, isLoggedIn, currentScreen, student);
+				ShowMenuScreen_Lecturer(currentUser, users, courses, schedules, presences, scores, isLoggedIn, currentScreen, student);
 			}
 			else if (currentUser.type == STUDENT) {
-				ShowMenuScreen_Student(currentUser, users, courses, isLoggedIn, currentScreen, student);
+				ShowMenuScreen_Student(currentUser, users, courses, schedules, presences, scores, isLoggedIn, currentScreen, student);
 			}
 		}
 	}
@@ -61,6 +72,9 @@ void main() {
 	WriteLecturerDataToFile("test2.csv", users);
 	WriteStaffDataToFile("test3.csv", users);
 	WriteCourseDataToFile("test4.csv", courses);
+	WriteScheduleDataToFile("test5.csv", schedules);
+	WritePresenceDataToFile("test6.csv", presences);
+	WriteScoreDataToFile("test7.csv", scores);
 
-	ShowExitScreen(currentUser, users, courses, isLoggedIn, currentScreen, student);
+	ShowExitScreen(currentUser, users, courses, schedules, presences, scores, isLoggedIn, currentScreen, student);
 }

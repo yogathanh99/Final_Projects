@@ -7,7 +7,7 @@ Implementation for all menu showing function
 #include "staff_students.h"
 #include "staff_course.h"
 
-void ShowHomeScreen_Guest(User &currentUser, vector<User> &users, vector<Course> &courses, bool &isLoggedIn, Screen &currentScreen, User &student) {
+void ShowHomeScreen_Guest(User &currentUser, vector<User> &users, vector<Course> &courses, vector<Schedule> schedules, vector<Presence> presences, vector<Score> scores, bool &isLoggedIn, Screen &currentScreen, User &student) {
 	string action;
 
 	cout << "1. Login" << endl;
@@ -27,7 +27,7 @@ void ShowHomeScreen_Guest(User &currentUser, vector<User> &users, vector<Course>
 	}
 }
 
-void ShowHomeScreen_User(User &currentUser, vector<User> &users, vector<Course> &courses, bool &isLoggedIn, Screen &currentScreen, User &student) {
+void ShowHomeScreen_User(User &currentUser, vector<User> &users, vector<Course> &courses, vector<Schedule> schedules, vector<Presence> presences, vector<Score> scores, bool &isLoggedIn, Screen &currentScreen, User &student) {
 	string action;
 	cout << "1. Show Menu" << endl;
 	cout << "2. View info" << endl;
@@ -58,7 +58,7 @@ void ShowHomeScreen_User(User &currentUser, vector<User> &users, vector<Course> 
 	}
 }
 
-void ShowMenuScreen_Staff(User &currentUser, vector<User> &users, vector<Course> &courses, bool &isLoggedIn, Screen &currentScreen, User &student) {
+void ShowMenuScreen_Staff(User &currentUser, vector<User> &users, vector<Course> &courses, vector<Schedule> schedules, vector<Presence> presences, vector<Score> scores, bool &isLoggedIn, Screen &currentScreen, User &student) {
 	string action;
 	cout << "1. Import students of a class from a csv file" << endl;
 	cout << "2. Add a new student to a class" << endl;
@@ -192,7 +192,7 @@ void ShowMenuScreen_Staff(User &currentUser, vector<User> &users, vector<Course>
 	}
 }
 
-void ShowMenuScreen_Lecturer(User &currentUser, vector<User> &users, vector<Course> &courses, bool &isLoggedIn, Screen &currentScreen, User &student) {
+void ShowMenuScreen_Lecturer(User &currentUser, vector<User> &users, vector<Course> &courses, vector<Schedule> schedules, vector<Presence> presences, vector<Score> scores, bool &isLoggedIn, Screen &currentScreen, User &student) {
 	string action;
 
 	cout << "1. Import scoreboard of a course (midterm, final, lab, bonus)" << endl;
@@ -220,7 +220,7 @@ void ShowMenuScreen_Lecturer(User &currentUser, vector<User> &users, vector<Cour
 	}
 }
 
-void ShowMenuScreen_Student(User &currentUser, vector<User> &users, vector<Course> &courses, bool &isLoggedIn, Screen &currentScreen, User &student) {
+void ShowMenuScreen_Student(User &currentUser, vector<User> &users, vector<Course> &courses, vector<Schedule> schedules, vector<Presence> presences, vector<Score> scores, bool &isLoggedIn, Screen &currentScreen, User &student) {
 	string action;
 
 	cout << "1. Check-in" << endl;
@@ -252,6 +252,6 @@ void ShowMenuScreen_Student(User &currentUser, vector<User> &users, vector<Cours
 	}
 }
 
-void ShowExitScreen(User &currentUser, vector<User> &users, vector<Course> &courses, bool &isLoggedIn, Screen &currentScreen, User &student) {
+void ShowExitScreen(User &currentUser, vector<User> &users, vector<Course> &courses, vector<Schedule> schedules, vector<Presence> presences, vector<Score> scores, bool &isLoggedIn, Screen &currentScreen, User &student) {
 	cout << "Thanks for using the software!" << endl;
 }
