@@ -7,6 +7,13 @@ int StrToInt(string s) {
 	return x;
 }
 
+double StrToDouble(string s) {
+	stringstream ss(s);
+	double x;
+	ss >> x;
+	return x;
+}
+
 string IntToStr(int x, int d) {
 	stringstream ss;
 	ss << x;

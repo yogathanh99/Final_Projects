@@ -10,6 +10,9 @@ Header for miscellaneous function
 // Convert string to integer
 int StrToInt(string s);
 
+// Convert string to double
+double StrToDouble(string s);
+
 // Convert integer to string
 string IntToStr(int x, int d = 0);
 
