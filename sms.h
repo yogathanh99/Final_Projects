@@ -70,6 +70,7 @@ struct Schedule {
 	string courseCode;
 	string year;
 	int semester;
+	string _class;
 	Date startAt;
 	Date endAt;
 	Time from;

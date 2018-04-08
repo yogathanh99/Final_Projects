@@ -134,6 +134,7 @@ void ReadScheduleDataFromFile(string path, vector<Schedule> &schedules) {
 		getline(fin, schedule.year, ',');
 		getline(fin, tmp, ',');
 		schedule.semester = StrToInt(tmp);
+		getline(fin, schedule._class, ',');
 
 		getline(fin, tmp, ',');
 		schedule.startAt = StrToDate(tmp);
@@ -291,6 +292,7 @@ void WriteScheduleDataToFile(string path, vector<Schedule> &schedules) {
 		fout << schedules[i].courseCode << ",";
 		fout << schedules[i].year << ",";
 		fout << schedules[i].semester << ",";
+		fout << schedules[i]._class << ",";
 		fout << DateToStr(schedules[i].startAt) << ",";
 		fout << DateToStr(schedules[i].endAt) << ",";
 		fout << TimeToStr(schedules[i].from) << ",";
