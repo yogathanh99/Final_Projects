@@ -64,12 +64,17 @@ struct Course
 	int semester;
 	string courseName;
 	string lecturerUsername;
+};
+
+struct Schedule {
+	string courseCode;
+	string year;
+	int semester;
 	Date startAt;
 	Date endAt;
 	Time from;
 	Time to;
 	DaysOfWeek daysOfWeek;
-	bool isAvailable;
 };
 
 struct Presence
