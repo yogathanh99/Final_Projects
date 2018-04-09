@@ -6,8 +6,13 @@ Implementation for all menu showing function
 #include "all_roles.h"
 #include "staff_students.h"
 #include "staff_course.h"
+#include "staff_schedule.h"
+#include "staff_attendance.h"
+#include "staff_score.h"
+#include "lecturer.h"
+#include "student.h"
 
-void ShowHomeScreen_Guest(User &currentUser, vector<User> &users, vector<Course> &courses, vector<Schedule> schedules, vector<Presence> presences, vector<Score> scores, bool &isLoggedIn, Screen &currentScreen, User &student) {
+void ShowHomeScreen_Guest(User &currentUser, vector<User> &users, vector<Course> &courses, vector<Schedule> &schedules, vector<Presence> &presences, vector<Score> &scores, bool &isLoggedIn, Screen &currentScreen, User &student) {
 	string action;
 
 	cout << "1. Login" << endl;
@@ -27,7 +32,7 @@ void ShowHomeScreen_Guest(User &currentUser, vector<User> &users, vector<Course>
 	}
 }
 
-void ShowHomeScreen_User(User &currentUser, vector<User> &users, vector<Course> &courses, vector<Schedule> schedules, vector<Presence> presences, vector<Score> scores, bool &isLoggedIn, Screen &currentScreen, User &student) {
+void ShowHomeScreen_User(User &currentUser, vector<User> &users, vector<Course> &courses, vector<Schedule> &schedules, vector<Presence> &presences, vector<Score> &scores, bool &isLoggedIn, Screen &currentScreen, User &student) {
 	string action;
 	cout << "1. Show Menu" << endl;
 	cout << "2. View info" << endl;
@@ -58,7 +63,7 @@ void ShowHomeScreen_User(User &currentUser, vector<User> &users, vector<Course> 
 	}
 }
 
-void ShowMenuScreen_Staff(User &currentUser, vector<User> &users, vector<Course> &courses, vector<Schedule> schedules, vector<Presence> presences, vector<Score> scores, bool &isLoggedIn, Screen &currentScreen, User &student) {
+void ShowMenuScreen_Staff(User &currentUser, vector<User> &users, vector<Course> &courses, vector<Schedule> &schedules, vector<Presence> &presences, vector<Score> &scores, bool &isLoggedIn, Screen &currentScreen, User &student) {
 	string action;
 	cout << "1. Import students of a class from a csv file" << endl;
 	cout << "2. Add a new student to a class" << endl;
@@ -158,9 +163,13 @@ void ShowMenuScreen_Staff(User &currentUser, vector<User> &users, vector<Course>
 	}
 	else if (action == "14") {
 		// Import courses' schedules from a csv file
+		system("CLS");
+		ImportScheduleFromFile(courses, schedules);
 	}
 	else if (action == "15") {
 		// Add a course's schedule
+		system("CLS");
+		AddASchedule(courses, schedules);
 	}
 	else if (action == "16") {
 		// Edit a course's schedule
@@ -192,7 +201,7 @@ void ShowMenuScreen_Staff(User &currentUser, vector<User> &users, vector<Course>
 	}
 }
 
-void ShowMenuScreen_Lecturer(User &currentUser, vector<User> &users, vector<Course> &courses, vector<Schedule> schedules, vector<Presence> presences, vector<Score> scores, bool &isLoggedIn, Screen &currentScreen, User &student) {
+void ShowMenuScreen_Lecturer(User &currentUser, vector<User> &users, vector<Course> &courses, vector<Schedule> &schedules, vector<Presence> &presences, vector<Score> &scores, bool &isLoggedIn, Screen &currentScreen, User &student) {
 	string action;
 
 	cout << "1. Import scoreboard of a course (midterm, final, lab, bonus)" << endl;
@@ -220,7 +229,7 @@ void ShowMenuScreen_Lecturer(User &currentUser, vector<User> &users, vector<Cour
 	}
 }
 
-void ShowMenuScreen_Student(User &currentUser, vector<User> &users, vector<Course> &courses, vector<Schedule> schedules, vector<Presence> presences, vector<Score> scores, bool &isLoggedIn, Screen &currentScreen, User &student) {
+void ShowMenuScreen_Student(User &currentUser, vector<User> &users, vector<Course> &courses, vector<Schedule> &schedules, vector<Presence> &presences, vector<Score> &scores, bool &isLoggedIn, Screen &currentScreen, User &student) {
 	string action;
 
 	cout << "1. Check-in" << endl;
@@ -252,6 +261,6 @@ void ShowMenuScreen_Student(User &currentUser, vector<User> &users, vector<Cours
 	}
 }
 
-void ShowExitScreen(User &currentUser, vector<User> &users, vector<Course> &courses, vector<Schedule> schedules, vector<Presence> presences, vector<Score> scores, bool &isLoggedIn, Screen &currentScreen, User &student) {
+void ShowExitScreen(User &currentUser, vector<User> &users, vector<Course> &courses, vector<Schedule> &schedules, vector<Presence> &presences, vector<Score> &scores, bool &isLoggedIn, Screen &currentScreen, User &student) {
 	cout << "Thanks for using the software!" << endl;
 }
