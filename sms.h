@@ -12,6 +12,7 @@ Data structures Library
 #include <sstream>
 #include <stdlib.h>
 #include <iomanip>
+#include <algorithm>
 
 using namespace std;
 
@@ -41,14 +42,35 @@ struct Date
 	int month;
 	int year;
 	bool inline operator < (const Date &rhs) const {
-
+		if (year < rhs.year) return true;
+		if (year > rhs.year) return false;
+		if (month < rhs.month) return true;
+		if (month > rhs.month) return false;
+		return (day < rhs.day);
+	}
+	bool inline operator <= (const Date &rhs) const {
+		if (year <= rhs.year) return true;
+		if (year > rhs.year) return false;
+		if (month <= rhs.month) return true;
+		if (month > rhs.month) return false;
+		return (day <= rhs.day);
 	}
 };
 
 struct Time
 {
-	int hours;
-	int minutes;
+	int hour;
+	int minute;
+	bool inline operator < (const Time &rhs) const {
+		if (hour < rhs.hour) return true;
+		if (hour > rhs.hour) return false;
+		return (minute < rhs.minute);
+	}
+	bool inline operator <= (const Time &rhs) const {
+		if (hour <= rhs.hour) return true;
+		if (hour > rhs.hour) return false;
+		return (minute < rhs.minute);
+	}
 };
 
 struct User
