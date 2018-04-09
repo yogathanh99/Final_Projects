@@ -11,6 +11,8 @@ Data structures Library
 #include <vector>
 #include <sstream>
 #include <stdlib.h>
+#include <iomanip>
+
 using namespace std;
 
 const string PASSWORD_DEFAULT = "password";
@@ -38,6 +40,9 @@ struct Date
 	int day;
 	int month;
 	int year;
+	bool inline operator < (const Date &rhs) const {
+
+	}
 };
 
 struct Time
@@ -96,6 +101,7 @@ struct Score
 	double midtermScore;
 	double labScore;
 	double finalScore;
+	double totalScore;
 };
 
 #endif // !SMS_H

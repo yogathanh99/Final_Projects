@@ -197,8 +197,10 @@ void ReadScoreDataFromFile(string path, vector<Score> &scores) {
 		score.midtermScore = StrToDouble(tmp);
 		getline(fin, tmp, ',');
 		score.labScore = StrToDouble(tmp);
-		getline(fin, tmp, '\n');
+		getline(fin, tmp, ',');
 		score.finalScore = StrToDouble(tmp);
+		getline(fin, tmp, '\n');
+		score.totalScore = StrToDouble(tmp);
 
 		if (score.courseCode != "")
 			scores.push_back(score);
@@ -326,6 +328,8 @@ void WriteScoreDataToFile(string path, vector<Score> &scores) {
 	if (!fout.is_open())
 		return;
 
+	fout << fixed << setprecision(1);
+
 	for (int i = 0; i < scores.size(); ++i) {
 		fout << scores[i].courseCode << ",";
 		fout << scores[i].year << ",";
@@ -333,7 +337,8 @@ void WriteScoreDataToFile(string path, vector<Score> &scores) {
 		fout << scores[i].studentId << ",";
 		fout << scores[i].midtermScore << ",";
 		fout << scores[i].labScore << ",";
-		fout << scores[i].finalScore << endl;
+		fout << scores[i].finalScore << ",";
+		fout << scores[i].totalScore << "\n";
 	}
 
 	fout.close();
