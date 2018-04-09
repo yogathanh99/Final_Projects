@@ -39,13 +39,13 @@ string DateToStr(Date d) {
 Time StrToTime(string s) {
 	Time t;
 	int pos = s.find(':'); // position of colon
-	t.hours = StrToInt(s.substr(0, pos));
-	t.minutes = StrToInt(s.substr(pos + 1));
+	t.hour = StrToInt(s.substr(0, pos));
+	t.minute = StrToInt(s.substr(pos + 1));
 	return t;
 }
 
 string TimeToStr(Time t) {
-	return IntToStr(t.hours, 2) + ":" + IntToStr(t.minutes, 2);
+	return IntToStr(t.hour, 2) + ":" + IntToStr(t.minute, 2);
 }
 
 DaysOfWeek StrToDow(string s) {
