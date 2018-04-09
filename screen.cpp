@@ -173,12 +173,18 @@ void ShowMenuScreen_Staff(User &currentUser, vector<User> &users, vector<Course>
 	}
 	else if (action == "16") {
 		// Edit a course's schedule
+		system("CLS");
+		EditASchedule(courses, schedules);
 	}
 	else if (action == "17") {
 		// Remove a course's schedule
+		system("CLS");
+		RemoveASchedule(schedules);
 	}
 	else if (action == "18") {
 		// View list of schedules
+		system("CLS");
+		ViewSchedules(schedules);
 	}
 	else if (action == "19") {
 		// Search and view attendance list of a course

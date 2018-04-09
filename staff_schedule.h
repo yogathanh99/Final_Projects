@@ -11,4 +11,10 @@ void ImportScheduleFromFile(const vector<Course> &courses, vector<Schedule> &sch
 
 void AddASchedule(const vector<Course> &courses, vector<Schedule> &schedules);
 
+void EditASchedule(const vector<Course> &courses, vector<Schedule> &schedules);
+
+void RemoveASchedule(vector<Schedule> &schedules);
+
+void ViewSchedules(vector<Schedule> &schedules);
+
 #endif // STAFF_SCHEDULE_H
