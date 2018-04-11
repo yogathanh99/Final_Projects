@@ -219,9 +219,13 @@ void ShowMenuScreen_Lecturer(User &currentUser, vector<User> &users, vector<Cour
 
 	if (action == "1") {
 		// Import scoreboard of a course (midterm, final, lab, bonus)
+		system("CLS");
+		ImportScoreboard(scores);
 	}
 	else if (action == "2") {
-		// Edit grade of a student
+		// Edit grade of a studen
+		system("CLS");
+		Editgrade(scores);
 	}
 	else if (action == "3") {
 		// View a scoreboard
