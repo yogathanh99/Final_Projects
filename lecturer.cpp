@@ -41,31 +41,7 @@ void ImportScoreFromFile(string path,vector <Score> &scores)
 	}
 	
 }
-bool checkCode(vector <Score> &scores)
-{
-	int i;
-	string coursecode;
-	string year;
-	int semester;
-	string tmp;
-	
-	cout << "Enter course code: ";
-	getline(cin, coursecode);
-	cout << "Enter year: ";
-	getline(cin, year);
-	cout << "Enter semester: ";
-	cin >> semester;
-	//getline(cin, tmp);
 
-
-	for (i = 0; i < scores.size(); i++)
-	
-		if (coursecode == scores[i].courseCode && year == scores[i].year && semester == scores[i].semester)
-		{
-			return true;
-		}
-	    
-}
 void Editgrade(vector <Score> &scores)
 {
 	int pick;
