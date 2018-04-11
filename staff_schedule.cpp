@@ -16,7 +16,7 @@ void printSchedule(const Schedule &schedule) {
 }
 
 string findLecturer(const vector<Course> &courses, const Schedule &s) {
-	for (int i = 0; i < size(courses); ++i) {
+	for (int i = 0; i < courses.size(); ++i) {
 		if (courses[i].courseCode == s.courseCode && courses[i].year == s.year && courses[i].semester == s.semester) 
 			return courses[i].lecturerUsername;		
 	}
@@ -200,11 +200,11 @@ void EditASchedule(const vector<Course> &courses, vector<Schedule> &schedules) {
 	getline(cin, _class);
 
 	int iSchedule;
-	for (iSchedule = 0; iSchedule < size(schedules); ++iSchedule) {
+	for (iSchedule = 0; iSchedule < schedules.size(); ++iSchedule) {
 		if (schedules[iSchedule].courseCode == courseCode && schedules[iSchedule].year == year && schedules[iSchedule].semester == semester && schedules[iSchedule]._class == _class)
 			break;
 	}
-	if (iSchedule == size(schedules)) {
+	if (iSchedule == schedules.size()) {
 		cout << "Can not find schedule with given course code, year, semester and class." << endl;
 		Pause();
 		return;
@@ -307,11 +307,11 @@ void RemoveASchedule(vector<Schedule> &schedules) {
 	getline(cin, _class);
 
 	int iSchedule;
-	for (iSchedule = 0; iSchedule < size(schedules); ++iSchedule) {
+	for (iSchedule = 0; iSchedule < schedules.size(); ++iSchedule) {
 		if (schedules[iSchedule].courseCode == courseCode && schedules[iSchedule].year == year && schedules[iSchedule].semester == semester && schedules[iSchedule]._class == _class)
 			break;
 	}
-	if (iSchedule == size(schedules)) {
+	if (iSchedule == schedules.size()) {
 		cout << "Can not find schedule with given course code, year, semester and class." << endl;
 		Pause();
 		return;
@@ -331,7 +331,7 @@ void ViewSchedules(vector<Schedule> &schedules) {
 	cout << "-------+---------+----+-------+----------+----------+-----+-----+-----------" << endl;
 //	cout << "  MH251|2017-2018|   1| 17CTT1|05/09/2016|23/09/2016|13:30|17:30|   Thursday"
 	
-	for (int i = 0; i < size(schedules); ++i) {
+	for (int i = 0; i < schedules.size(); ++i) {
 		if (_class == "*" || schedules[i]._class == _class) {
 			cout << setw(7) << schedules[i].courseCode << "|";
 			cout << setw(9) << schedules[i].year << "|";
