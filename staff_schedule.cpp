@@ -322,7 +322,7 @@ void RemoveASchedule(vector<Schedule> &schedules) {
 	Pause();
 }
 
-void ViewSchedules(vector<Schedule> &schedules) {
+void ViewSchedulesStaff(vector<Schedule> &schedules) {
 	string _class;
 	cout << "Enter class (enter * to view schedule of all class): ";
 	getline(cin, _class);

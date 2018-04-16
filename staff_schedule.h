@@ -15,6 +15,6 @@ void EditASchedule(const vector<Course> &courses, vector<Schedule> &schedules);
 
 void RemoveASchedule(vector<Schedule> &schedules);
 
-void ViewSchedules(vector<Schedule> &schedules);
+void ViewSchedulesStaff(vector<Schedule> &schedules);
 
 #endif // STAFF_SCHEDULE_H
