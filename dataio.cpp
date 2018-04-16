@@ -170,7 +170,7 @@ void ReadPresenceDataFromFile(string path, vector<Presence> &presences) {
 		getline(fin, presence.studentId, ',');
 		getline(fin, tmp, '\n');
 		presence.week = StrToInt(tmp);
-
+		presence.check = true;
 		if (presence.courseCode != "")
 			presences.push_back(presence);
 	}
@@ -201,7 +201,7 @@ void ReadScoreDataFromFile(string path, vector<Score> &scores) {
 		score.finalScore = StrToDouble(tmp);
 		getline(fin, tmp, '\n');
 		score.totalScore = StrToDouble(tmp);
-
+		
 		if (score.courseCode != "")
 			scores.push_back(score);
 	}
@@ -329,7 +329,7 @@ void WriteScoreDataToFile(string path, vector<Score> &scores) {
 		return;
 
 	fout << fixed << setprecision(1);
-
+	
 	for (int i = 0; i < scores.size(); ++i) {
 		fout << scores[i].courseCode << ",";
 		fout << scores[i].year << ",";
