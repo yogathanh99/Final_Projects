@@ -184,19 +184,27 @@ void ShowMenuScreen_Staff(User &currentUser, vector<User> &users, vector<Course>
 	else if (action == "18") {
 		// View list of schedules
 		system("CLS");
-		ViewSchedules(schedules);
+		ViewSchedulesStaff(schedules);
 	}
 	else if (action == "19") {
 		// Search and view attendance list of a course
+		system("CLS");
+		//ImportAttendance(presences);
+		SearchAndViewAttendance(presences);
 	}
 	else if (action == "20") {
 		// Export attendance list to a csv file
+		ExportAttendance(presences);
 	}
 	else if (action == "21") {
 		// Search and view scoreboard of a course
+		system("CLS");
+		//ImportScore(scores);
+		SearchAndViewScoreboard(scores);
 	}
 	else if (action == "22") {
 		// Export a scoreboard to a csv file
+		ExportScoreboard(scores);
 	}
 	else if (action == "0") {
 		currentScreen = HOME;
@@ -229,6 +237,8 @@ void ShowMenuScreen_Lecturer(User &currentUser, vector<User> &users, vector<Cour
 	}
 	else if (action == "3") {
 		// View a scoreboard
+		system("CLS");
+		ViewScore(currentUser, courses, scores);
 	}
 	else if (action == "0") {
 		currentScreen = HOME;
@@ -252,15 +262,19 @@ void ShowMenuScreen_Student(User &currentUser, vector<User> &users, vector<Cours
 
 	if (action == "1") {
 		// Check-in
+		CheckIn(currentUser, courses, presences);
 	}
 	else if (action == "2") {
 		// View check-in result
+		ViewCheckInResult(currentUser, presences);
 	}
 	else if (action == "3") {
 		// View student's scores of a course
+		ViewScore(currentUser, scores);
 	}
 	else if (action == "4") {
 		// View schedules
+		ViewScheduleStudent(currentUser, schedules);
 	}
 	else if (action == "0") {
 		currentScreen = HOME;
