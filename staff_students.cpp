@@ -75,11 +75,15 @@ void AddStudent(vector<User> &users) {
 	getline(cin, student.mobilePhone);
 	student.password = PASSWORD_DEFAULT;
 	student.type = STUDENT;
+	
 	users.push_back(student);
+	
+	cout << "Successfully added" << endl;
+	Pause();
 }
 
 void EditExistStudent(vector<User> &users) {
-	int pick;
+	string pick;
 	string fullname, _class, mail, phone, password, ID;
 
 	cout << "ID student: ";
@@ -102,51 +106,52 @@ void EditExistStudent(vector<User> &users) {
 		cout << "\n4. Change class: ";
 
 		cout << "\nWhat do you want to change: ";
-		cin >> pick;
+		getline(cin, pick);
 
-		if (pick == 0) {
-			cin.ignore(1000, '\n');
+		if (pick == "0") {
 			cout << "Input new full name: ";
 			getline(cin, fullname);
 			users[i].fullName = fullname;
 			cout << "Changed successfully" << endl;
-			cin.ignore(1000, '\n');
+			Pause();
 		}
 
-		else if (pick == 1) {
-			cin.ignore(1000, '\n');
+		else if (pick == "1") {
 			cout << "Input new mail: ";
 			getline(cin, mail);
 			users[i].email = mail;
 			cout << "Changed Successfully" << endl;
-			cin.ignore(1000, '\n');
+			Pause();
 		}
-		else if (pick == 2) {
-			cin.ignore(1000, '\n');
+		else if (pick == "2") {
 			cout << "Input mobile phone: ";
 			getline(cin, phone);
 			users[i].mobilePhone = phone;
 			cout << "Changed Successfully" << endl;
-			cin.ignore(1000, '\n');
+			Pause();
 		}
-		else if (pick == 3) {
-			cin.ignore(1000, '\n');
+		else if (pick == "3") {
 			cout << "Input new password: ";
 			getline(cin, password);
 			users[i].password = password;
 			cout << "Changed Successfully" << endl;
-			cin.ignore(1000, '\n');
+			Pause();
 		}
-		else if (pick == 4) {
-			cin.ignore(1000, '\n');
+		else if (pick == "4") {
 			cout << "Input new class: ";
 			getline(cin, _class);
 			users[i]._class = _class;
 			cout << "Changed Successfully" << endl;
-			cin.ignore(1000, '\n');
+			Pause();
 		}
-		else
+		else {
 			cout << "Entered action is not legit. Please try again." << endl;
+			Pause();
+		}
+	}
+	else {
+		cout << "No student with given ID found" << endl;
+		Pause();
 	}
 }
 
@@ -201,6 +206,10 @@ void ChangeClassStudent(vector <User> &users)
 			cout << "Changed successfully" << endl;
 			Pause();
 		}
+		else {
+			cout << "No student with given ID found" << endl;
+			Pause();
+		}
 	}
 }
 
@@ -233,7 +242,7 @@ void View_Class_List(vector<User> users)
 				cout << "Class: " << users[i]._class << endl;
 		}
 	}
-	cin.ignore(1000, '\n');
+	Pause();
 }
 
 void ViewStudentList(vector<User> users)

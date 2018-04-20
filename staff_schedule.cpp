@@ -38,13 +38,10 @@ bool timeConflicted(const Time &l1, const Time &r1, const Time &l2, const Time &
 bool checkSchedule(const vector<Course> &courses, vector<Schedule> &schedules, Schedule schedule, Schedule &conflictedSchedule) {
 	string sLecturer = findLecturer(courses, schedule);
 	
-	printSchedule(schedule);
 	for (int i = 0; i < schedules.size(); ++i) {
-		//cout << i << endl;
-		//cout << dateConflicted(schedules[i].startAt, schedules[i].endAt, schedule.startAt, schedule.endAt) << endl;
-		//cout << timeConflicted(schedules[i].from, schedules[i].to, schedule.from, schedule.to) << endl;
-		//cout << (schedules[i].daysOfWeek == schedule.daysOfWeek) << endl;
-		if (dateConflicted(schedules[i].startAt, schedules[i].endAt, schedule.startAt, schedule.endAt) && timeConflicted(schedules[i].from, schedules[i].to, schedule.from, schedule.to) && schedules[i].daysOfWeek == schedule.daysOfWeek) {
+		if ((dateConflicted(schedules[i].startAt, schedules[i].endAt, schedule.startAt, schedule.endAt) && timeConflicted(schedules[i].from, schedules[i].to, schedule.from, schedule.to) && schedules[i].daysOfWeek == schedule.daysOfWeek)
+		|| (schedules[i].courseCode == schedule.courseCode && schedules[i].year == schedule.year && schedules[i].semester == schedule.semester && schedules[i]._class == schedule._class))
+		{
 			string iLecturer = findLecturer(courses, schedules[i]);
 			cout << iLecturer << endl;
 			if (schedules[i]._class == schedule._class || iLecturer == sLecturer) {
@@ -52,6 +49,7 @@ bool checkSchedule(const vector<Course> &courses, vector<Schedule> &schedules, S
 				return true;
 			}
 		}
+		
 	}
 
 	return false;

@@ -44,19 +44,29 @@ void ImportCourseFromFile(vector<Course> &courses) {
 
 void RemoveCourse(vector<Course> &courses)
 {
-	string x, y;
+	string x, y, tmp;
+	int z;
 	cout << "Input a Course code that you want to remove: ";
 	getline(cin, x);
 	cout << "Input a year: ";
 	getline(cin, y);
+	cout << "Input semester: ";
+	getline(cin, tmp);
+	z = StrToInt(tmp);
+
 	for (int i = 0; i < courses.size(); i++)
 	{
-		if (courses[i].courseCode == x && courses[i].year == y)
+		if (courses[i].courseCode == x && courses[i].year == y && courses[i].semester == z)
 		{
 			courses.erase(courses.begin() + i);
+			cout << "Remove successfully" << endl;
+			Pause();
 			break;
 		}
 	}
+
+	cout << "Can not find course with given course code, year and semester." << endl;
+	Pause();
 }
 
 void AddCourse(vector<Course> &courses) {
@@ -89,18 +99,28 @@ void AddCourse(vector<Course> &courses) {
 }
 
 void EditExistCourse(vector<Course> &courses) {
-	int pick, i, new_semester;
-	string newyear, new_name_course, new_lecturer;
-	bool check = false;
 	cout << "Input course code: ";
 	string code;
 	getline(cin, code);
+	cout << "Input year: ";
+	string year;
+	getline(cin, year);
+	cout << "Input semester: ";
+	string tmp;
+	getline(cin, tmp);
+	int semester = StrToInt(tmp);
+
+	bool check = false;
+	int pick, i, new_semester;
+	string newyear, new_name_course, new_lecturer;
+
 	for (i = 0; i < courses.size(); ++i) {
-		if (courses[i].courseCode == code) {
+		if (courses[i].courseCode == code && courses[i].year == year && courses[i].semester == semester) {
 			check = true;
 			break;
 		}
 	}
+
 	if (check) {
 		cout << "0. Change year";
 		cout << "\n1. Change semester";

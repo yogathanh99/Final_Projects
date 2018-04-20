@@ -27,23 +27,6 @@ void main() {
 	WritePresenceDataToFile("Backup/presence.csv", presences);
 	WriteScoreDataToFile("Backup/score.csv", scores);
 
-
-	//ofstream fout;
-	//fout.open("text.txt");
-	//if (fout.is_open()) {
-	//	SHA1 checksum;
-	//	checksum.update("abc");
-	//	fout << "123: " << checksum.final() << endl;
-	//	checksum.update(PASSWORD_DEFAULT);
-	//	fout << PASSWORD_DEFAULT << ": " << checksum.final() << endl;
-	//}
-	//fout.close();
-
-	//ReadStudentDataFromFile("test1.csv", users);
-	//ReadLecturerDataFromFile("test2.csv", users);
-	//ReadStaffDataFromFile("test3.csv", users);
-	//ReadCourseDataFromFile("test4.csv", courses);
-
 	User currentUser, student;
 	bool isLoggedIn = false;
 	Screen currentScreen = HOME;
