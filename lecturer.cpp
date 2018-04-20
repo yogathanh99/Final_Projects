@@ -158,3 +158,43 @@ void Editgrade(vector <Score> &scores)
 		Pause();
 	}
 }
+
+void ViewScore(User CurrentUser, vector<Course> course, vector<Score> scores) {
+	bool check = true;
+	for (int i = 0; i < course.size(); ++i) {
+		if (CurrentUser.username == course[i].lecturerUsername) {
+			check = false;
+			break;
+		}
+		else check = true;
+	}
+	if (!check) {
+		cout << "Enter course code: ";
+		string code;
+		getline(cin, code);
+		bool ok = true;
+		for (int i = 0; i < scores.size(); ++i) {
+			if (code == scores[i].courseCode) {
+				ok = false;
+				break;
+			}
+		}
+		if (!ok) {
+			for (int i = 0; i < scores.size(); ++i) {
+				if (code == scores[i].courseCode) {
+					cout << "Course code: " << scores[i].courseCode << endl;
+					cout << "Year: " << scores[i].year << endl;
+					cout << "Semester: " << scores[i].semester << endl;
+					cout << "Student ID: " << scores[i].studentId << endl;
+					cout << "Midterm score: " << scores[i].midtermScore << endl;
+					cout << "Lab score: " << scores[i].labScore << endl;
+					cout << "Final score: " << scores[i].finalScore << endl;
+					cout << "Total score: " << scores[i].totalScore << endl;
+					cout << endl;
+				}
+			}
+		}
+	}
+	else cout << "Lecturer hasn't course" << endl;
+	Pause();
+}

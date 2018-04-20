@@ -1,0 +1,11 @@
+1) Sample user:
+- Student
+Username: 1751018
+Password: 123
+- Staff
+Username: nva
+Password: abc
+- Lecturer
+Username: htthanh
+Password: abc
+

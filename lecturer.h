@@ -12,4 +12,6 @@ void ImportScoreboard(vector<Score> &Scores);
 
 void Editgrade(vector <Score> &scores);
 
+void ViewScore(User currentuser, vector<Course> course, vector<Score> scores);
+
 #endif // LECTURER_H

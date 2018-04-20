@@ -262,18 +262,22 @@ void ShowMenuScreen_Student(User &currentUser, vector<User> &users, vector<Cours
 
 	if (action == "1") {
 		// Check-in
+		system("CLS");
 		CheckIn(currentUser, courses, presences);
 	}
 	else if (action == "2") {
 		// View check-in result
+		system("CLS");
 		ViewCheckInResult(currentUser, presences);
 	}
 	else if (action == "3") {
 		// View student's scores of a course
+		system("CLS");
 		ViewScore(currentUser, scores);
 	}
 	else if (action == "4") {
 		// View schedules
+		system("CLS");
 		ViewScheduleStudent(currentUser, schedules);
 	}
 	else if (action == "0") {

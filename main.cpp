@@ -19,16 +19,25 @@ void main() {
 	ReadPresenceDataFromFile("presence.csv", presences);
 	ReadScoreDataFromFile("score.csv", scores);
 
-	ofstream fout;
-	fout.open("text.txt");
-	if (fout.is_open()) {
-		SHA1 checksum;
-		checksum.update("abc");
-		fout << "123: " << checksum.final() << endl;
-		checksum.update(PASSWORD_DEFAULT);
-		fout << PASSWORD_DEFAULT << ": " << checksum.final() << endl;
-	}
-	fout.close();
+	WriteStudentDataToFile("Backup/student.csv", users);
+	WriteLecturerDataToFile("Backup/lecturer.csv", users);
+	WriteStaffDataToFile("Backup/staff.csv", users);
+	WriteCourseDataToFile("Backup/course.csv", courses);
+	WriteScheduleDataToFile("Backup/schedule.csv", schedules);
+	WritePresenceDataToFile("Backup/presence.csv", presences);
+	WriteScoreDataToFile("Backup/score.csv", scores);
+
+
+	//ofstream fout;
+	//fout.open("text.txt");
+	//if (fout.is_open()) {
+	//	SHA1 checksum;
+	//	checksum.update("abc");
+	//	fout << "123: " << checksum.final() << endl;
+	//	checksum.update(PASSWORD_DEFAULT);
+	//	fout << PASSWORD_DEFAULT << ": " << checksum.final() << endl;
+	//}
+	//fout.close();
 
 	//ReadStudentDataFromFile("test1.csv", users);
 	//ReadLecturerDataFromFile("test2.csv", users);
@@ -80,13 +89,13 @@ void main() {
 		}
 	}
 
-	WriteStudentDataToFile("test1.csv", users);
-	WriteLecturerDataToFile("test2.csv", users);
-	WriteStaffDataToFile("test3.csv", users);
-	WriteCourseDataToFile("test4.csv", courses);
-	WriteScheduleDataToFile("test5.csv", schedules);
-	WritePresenceDataToFile("test6.csv", presences);
-	WriteScoreDataToFile("test7.csv", scores);
+	WriteStudentDataToFile("student.csv", users);
+	WriteLecturerDataToFile("lecturer.csv", users);
+	WriteStaffDataToFile("staff.csv", users);
+	WriteCourseDataToFile("course.csv", courses);
+	WriteScheduleDataToFile("schedule.csv", schedules);
+	WritePresenceDataToFile("presence.csv", presences);
+	WriteScoreDataToFile("score.csv", scores);
 
 	ShowExitScreen(currentUser, users, courses, schedules, presences, scores, isLoggedIn, currentScreen, student);
 }
