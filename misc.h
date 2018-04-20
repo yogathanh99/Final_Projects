@@ -3,6 +3,7 @@ Header for miscellaneous function
 */
 
 #include "sms.h"
+#include "sha1.h"
 
 #ifndef MISC_H
 #define MISC_H
@@ -42,5 +43,8 @@ string BoolToStr(bool b);
 
 // Pause the program. User can press any key to continue.
 void Pause();
+
+// Get password hash with SHA-1
+string getHash(string password);
 
 #endif // !MISC_H

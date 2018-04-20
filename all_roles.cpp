@@ -10,6 +10,7 @@ void Login(User &currentUser, vector<User> users, bool &loginSuccessful) {
 	string username; getline(cin, username);
 	cout << "Password: ";
 	string password; getline(cin, password);
+	password = getHash(password);
 	/*char tmp;
 	for (int i = 0;;) {
 		tmp = getchar();
@@ -51,6 +52,8 @@ void ChangePassword(User &currentUser) {
 		Pause();
 		return;
 	}
+
+	newPassword = getHash(newPassword);
 	if (newPassword == currentUser.password) {
 		cout << "New password must be different from current password. Please try again." << endl;
 		Pause();

@@ -13,6 +13,7 @@ Data structures Library
 #include <stdlib.h>
 #include <iomanip>
 #include <algorithm>
+#include <cstdint>
 
 using namespace std;
 
@@ -112,6 +113,7 @@ struct Presence
 	int semester;
 	string studentId;
 	int week;
+	bool check;
 };
 
 struct Score

@@ -2,14 +2,14 @@
 
 int StrToInt(string s) {
 	stringstream ss(s);
-	int x;
+	int x = 0;
 	ss >> x;
 	return x;
 }
 
 double StrToDouble(string s) {
 	stringstream ss(s);
-	double x;
+	double x = 0;
 	ss >> x;
 	return x;
 }
@@ -24,6 +24,10 @@ string IntToStr(int x, int d) {
 
 Date StrToDate(string s) {
 	Date d;
+	d.day = 0;
+	d.month = 0;
+	d.year = 0;
+	
 	int pos1 = s.find('/'); // position of first slash
 	int pos2 = s.find('/', pos1 + 1); // position of second slash
 	d.day = StrToInt(s.substr(0, pos1));
@@ -38,6 +42,9 @@ string DateToStr(Date d) {
 
 Time StrToTime(string s) {
 	Time t;
+	t.hour = 0;
+	t.minute = 0;
+
 	int pos = s.find(':'); // position of colon
 	t.hour = StrToInt(s.substr(0, pos));
 	t.minute = StrToInt(s.substr(pos + 1));
@@ -85,4 +92,10 @@ string BoolToStr(bool b) {
 void Pause() {
 	cout << "Press any key to continue." << endl;
 	cin.get();
+}
+
+string getHash(string password) {
+	SHA1 checksum;
+	checksum.update(password);
+	return checksum.final();
 }

@@ -2,6 +2,7 @@
 #include "dataio.h"
 #include "all_roles.h"
 #include "screen.h"
+#include "misc.h"
 
 void main() {
 	vector<User> users;
@@ -17,6 +18,17 @@ void main() {
 	ReadScheduleDataFromFile("schedule.csv", schedules);
 	ReadPresenceDataFromFile("presence.csv", presences);
 	ReadScoreDataFromFile("score.csv", scores);
+
+	ofstream fout;
+	fout.open("text.txt");
+	if (fout.is_open()) {
+		SHA1 checksum;
+		checksum.update("abc");
+		fout << "123: " << checksum.final() << endl;
+		checksum.update(PASSWORD_DEFAULT);
+		fout << PASSWORD_DEFAULT << ": " << checksum.final() << endl;
+	}
+	fout.close();
 
 	//ReadStudentDataFromFile("test1.csv", users);
 	//ReadLecturerDataFromFile("test2.csv", users);
@@ -38,7 +50,7 @@ void main() {
 			if (isLoggedIn == false) {
 				ShowHomeScreen_Guest(currentUser, users, courses, schedules, presences, scores, isLoggedIn, currentScreen, student);
 			}
-			else if (currentUser.password == PASSWORD_DEFAULT) {
+			else if (currentUser.password == getHash(PASSWORD_DEFAULT)) {
 				cout << "This is your first login. Please change your password to continue." << endl;
 				ChangePassword(currentUser);
 				for (int i = 0; i < users.size(); ++i) {
