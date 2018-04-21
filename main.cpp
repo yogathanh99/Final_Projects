@@ -3,6 +3,7 @@
 #include "all_roles.h"
 #include "screen.h"
 #include "misc.h"
+#include "UI.h"
 
 void main() {
 	vector<User> users;
@@ -33,8 +34,13 @@ void main() {
 
 	while (true) {
 		system("CLS");
+		UI();
+		textcolor(13);
+		gotoxy(45, 8);
 		cout << "  Student Management System v1.0  " << endl;
+		gotoxy(45, 9);
 		cout << "----------------------------------" << endl;
+		textcolor(11);
 		if (currentScreen == EXIT) {
 			break;
 		}
@@ -43,6 +49,7 @@ void main() {
 				ShowHomeScreen_Guest(currentUser, users, courses, schedules, presences, scores, isLoggedIn, currentScreen, student);
 			}
 			else if (currentUser.password == getHash(PASSWORD_DEFAULT)) {
+				gotoxy(27, 10);
 				cout << "This is your first login. Please change your password to continue." << endl;
 				ChangePassword(currentUser);
 				for (int i = 0; i < users.size(); ++i) {

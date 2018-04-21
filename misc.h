@@ -42,7 +42,7 @@ bool StrToBool(string s);
 string BoolToStr(bool b);
 
 // Pause the program. User can press any key to continue.
-void Pause();
+void Pause(int x, int y);
 
 // Get password hash with SHA-1
 string getHash(string password);

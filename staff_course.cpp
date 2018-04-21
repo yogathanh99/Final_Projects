@@ -13,7 +13,7 @@ void ImportCourseFromFile(vector<Course> &courses) {
 	fin.open(path);
 	if (!fin.is_open()) {
 		cout << "No csv file with such path was found. Please try again." << endl;
-		Pause();
+		Pause(45,3);
 		return;
 	}
 
@@ -39,7 +39,7 @@ void ImportCourseFromFile(vector<Course> &courses) {
 	fin.close();
 
 	cout << "Succesfully imported " << courseCount << " new courses." << endl;
-	Pause();
+	Pause(45,3);
 }
 
 void RemoveCourse(vector<Course> &courses)
@@ -60,13 +60,13 @@ void RemoveCourse(vector<Course> &courses)
 		{
 			courses.erase(courses.begin() + i);
 			cout << "Remove successfully" << endl;
-			Pause();
+			Pause(45,5);
 			break;
 		}
 	}
 
 	cout << "Can not find course with given course code, year and semester." << endl;
-	Pause();
+	Pause(45,5);
 }
 
 void AddCourse(vector<Course> &courses) {
@@ -88,14 +88,14 @@ void AddCourse(vector<Course> &courses) {
 			|| (newcourse.courseName == courses[i].courseName && newcourse.lecturerUsername == courses[i].lecturerUsername))
 		{
 			cout << "Course has already have" << endl;
-			Pause();
+			Pause(45,7);
 			return;
 		}
 	}
 
 	courses.push_back(newcourse);
 	cout << "Add succesfully" << endl;
-	Pause();
+	Pause(45,7);
 }
 
 void EditExistCourse(vector<Course> &courses) {
@@ -136,7 +136,7 @@ void EditExistCourse(vector<Course> &courses) {
 			getline(cin, newyear);
 			courses[i].year = newyear;
 			cout << "Changed successfully" << endl;
-			Pause();
+			Pause(45,12);
 			break;
 		case 1:
 			cout << "Input new semester: ";
@@ -144,31 +144,31 @@ void EditExistCourse(vector<Course> &courses) {
 			courses[i].semester = new_semester;
 			cin.ignore(1000, '\n');
 			cout << "Changed successfully" << endl;
-			Pause();
+			Pause(45,12);
 			break;
 		case 2:
 			cout << "Input new course name: ";
 			getline(cin, new_name_course);
 			courses[i].courseName = new_name_course;
 			cout << "Changed successfully" << endl;
-			Pause();
+			Pause(45,12);
 			break;
 		case 3:
 			cout << "Input new lecturer username: ";
 			getline(cin, new_lecturer);
 			courses[i].lecturerUsername = new_lecturer;
 			cout << "Changed successfully" << endl;
-			Pause();
+			Pause(45,12);
 			break;
 		default:
 			cout << "Invalid" << endl;
-			Pause();
+			Pause(45,11);
 			break;
 		}
 	}
 	else {
 		cout << "Sorry. Course don't have" << endl;
-		Pause();
+		Pause(45,11);
 	}
 }
 
@@ -177,5 +177,5 @@ void View_Courses_List(vector <Course> &courses)
 	int i;
 	for (i = 0; i < courses.size(); i++)
 		cout << courses[i].courseCode << " " << courses[i].year << " " << courses[i].semester << " " << courses[i].courseName << " " << courses[i].lecturerUsername << " " << endl;
-	Pause();
+	Pause(45,1+courses.size());
 }

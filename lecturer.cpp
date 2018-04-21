@@ -16,7 +16,7 @@ void ImportScoreboard(vector<Score> &Scores)
 	if (!fin.is_open())
 	{
 		cout << "No csv file with such path was found. Please try again." << endl;
-		Pause();
+		Pause(45,3);
 		return;
 	}
 
@@ -60,7 +60,7 @@ void ImportScoreboard(vector<Score> &Scores)
 	fin.close();
 
 	cout << "Succesfully imported " << studentCount << " students' scores." << endl;
-	Pause();
+	Pause(45,3);
 }
 
 void Editgrade(vector <Score> &scores)
@@ -112,7 +112,7 @@ void Editgrade(vector <Score> &scores)
 			cin.ignore(1000, '\n');
 			scores[i].midtermScore = new_midterm;
 			cout << "Change successfully " << endl;
-			Pause();
+			Pause(45,12);
 			break;
 
 		case 1:
@@ -122,7 +122,7 @@ void Editgrade(vector <Score> &scores)
 			cin.ignore(1000, '\n');
 			scores[i].labScore = new_lab;
 			cout << "Change successfully " << endl;
-			Pause();
+			Pause(45,12);
 			break;
 
 		case 2:
@@ -132,7 +132,7 @@ void Editgrade(vector <Score> &scores)
 			cin.ignore(1000, '\n');
 			scores[i].finalScore = new_final;
 			cout << "Change successfully " << endl;
-			Pause();
+			Pause(45,12);
 			break;
 
 		case 3:
@@ -142,25 +142,26 @@ void Editgrade(vector <Score> &scores)
 			cin.ignore(1000, '\n');
 			scores[i].totalScore = new_total;
 			cout << "Change successfully " << endl;
-			Pause();
+			Pause(45,12);
 			break;
 
 		default:
 
 			cout << "invalid: " << endl;
-			Pause();
+			Pause(45,11);
 			break;
 		}
 	}
 	else
 	{
 		cout << "Please try again: " << endl;
-		Pause();
+		Pause(45,11);
 	}
 }
 
 void ViewScore(User CurrentUser, vector<Course> course, vector<Score> scores) {
 	bool check = true;
+	int count(0);
 	for (int i = 0; i < course.size(); ++i) {
 		if (CurrentUser.username == course[i].lecturerUsername) {
 			check = false;
@@ -191,10 +192,11 @@ void ViewScore(User CurrentUser, vector<Course> course, vector<Score> scores) {
 					cout << "Final score: " << scores[i].finalScore << endl;
 					cout << "Total score: " << scores[i].totalScore << endl;
 					cout << endl;
+					++count;
 				}
 			}
 		}
 	}
 	else cout << "Lecturer hasn't course" << endl;
-	Pause();
+	Pause(45,count*9+1);
 }

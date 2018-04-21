@@ -9,7 +9,7 @@ void ImportAttendance(vector<Presence> &presences) {
 	fin.open("presence.csv");
 	if (!fin.is_open()) {
 		cout << "No csv file with such path was found. Please try again." << endl;
-		Pause();
+		Pause(45,2);
 		return;
 	}
 
@@ -51,7 +51,7 @@ void SearchAndViewAttendance(vector<Presence> presences) {
 			cout << endl;
 		}
 	}
-	Pause();
+	Pause(45,3+presences.size());
 }
 
 void ExportAttendance(vector<Presence> presences) {
@@ -66,6 +66,6 @@ void ExportAttendance(vector<Presence> presences) {
 		fout << presences[i].courseCode << "," << presences[i].year << "," << presences[i].semester << "," << presences[i].studentId << "," << presences[i].week << endl;
 	}
 	cout << "Export successfully" << endl;
-	Pause();
+	Pause(45,4);
 	fout.close();
 }

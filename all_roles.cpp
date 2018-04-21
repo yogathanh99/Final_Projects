@@ -4,10 +4,13 @@ Implementation for common use-cases of all roles
 
 #include "misc.h"
 #include "all_roles.h"
+#include "UI.h"
 
 void Login(User &currentUser, vector<User> users, bool &loginSuccessful) {
+	gotoxy(45, 13);
 	cout << "Username: ";
 	string username; getline(cin, username);
+	gotoxy(45, 14);
 	cout << "Password: ";
 	string password; getline(cin, password);
 	password = getHash(password);
@@ -30,40 +33,45 @@ void Login(User &currentUser, vector<User> users, bool &loginSuccessful) {
 	}*/
 	for (int i = 0; i < users.size(); ++i) {
 		if (users[i].username == username && users[i].password == password) {
+			gotoxy(45, 15);
 			cout << "Sucessfully logged in as '" << users[i].username << "'." << endl;
 			currentUser = users[i];
 			loginSuccessful = true;
-			Pause();
+			Pause(45,16);
 			return;
 		}
 	}
-
+	textcolor(12);
+	gotoxy(30, 15);
 	cout << "No such combination of username and password found. Please try again." << endl;
 	loginSuccessful = false;
-	Pause();
+	Pause(45,16);
 }
 
 void ChangePassword(User &currentUser) {
+	gotoxy(50, 11);
 	cout << "Enter new password: ";
 	string newPassword; getline(cin, newPassword);
 
 	if (newPassword == "") {
+		gotoxy(50, 12);
 		cout << "New password cannot be empty. Please try again." << endl;
-		Pause();
+		Pause(45,3);
 		return;
 	}
 
 	newPassword = getHash(newPassword);
 	if (newPassword == currentUser.password) {
+		gotoxy(50, 12);
 		cout << "New password must be different from current password. Please try again." << endl;
-		Pause();
+		Pause(45,3);
 		return;
 	}
 	
 	currentUser.password = newPassword;
-
+	gotoxy(50, 12);
 	cout << "Password has changed successfully" << endl;
-	Pause();
+	Pause(45,13);
 }
 
 void ViewInfo(User &currentUser) {
@@ -78,5 +86,5 @@ void ViewInfo(User &currentUser) {
 	else if (currentUser.type == 1) cout << "Academic staff" << endl;
 	else cout << "Lecturer" << endl;
 	cout << endl;
-	Pause();
+	Pause(45,7);
 }

@@ -1,4 +1,5 @@
 #include "misc.h"
+#include "UI.h"
 
 int StrToInt(string s) {
 	stringstream ss(s);
@@ -89,7 +90,8 @@ string BoolToStr(bool b) {
 	return "False";
 }
 
-void Pause() {
+void Pause(int x, int y) {
+	gotoxy(x, y);
 	cout << "Press any key to continue." << endl;
 	cin.get();
 }

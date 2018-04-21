@@ -66,7 +66,7 @@ bool confirmUpdate(const vector<Course> &courses, vector<Schedule> &schedules, S
 		getline(cin, respond);
 		if (respond == "N" || respond == "n") {
 			cout << "Operation aborted." << endl;
-			Pause();
+			Pause(45,4);
 			return false;
 		}
 	}
@@ -82,7 +82,7 @@ void ImportScheduleFromFile(const vector<Course> &courses, vector<Schedule> &sch
 	fin.open(path);
 	if (!fin.is_open()) {
 		cout << "No csv file with such path was found. Please try again." << endl;
-		Pause();
+		Pause(45,3);
 		return;
 	}
 
@@ -125,7 +125,7 @@ void ImportScheduleFromFile(const vector<Course> &courses, vector<Schedule> &sch
 	fin.close();
 
 	cout << "Succesfully imported " << scheduleCount << " new schedules." << endl;
-	Pause();
+	Pause(45,6);
 }
 
 void AddASchedule(const vector<Course> &courses, vector<Schedule> &schedules) {
@@ -145,7 +145,7 @@ void AddASchedule(const vector<Course> &courses, vector<Schedule> &schedules) {
 	string s = findLecturer(courses, schedule);
 	if (s == "N/A") {
 		cout << "Can not find course with given course code, year and semester." << endl;
-		Pause();
+		Pause(45,5);
 		return;
 	}
 
@@ -177,7 +177,7 @@ void AddASchedule(const vector<Course> &courses, vector<Schedule> &schedules) {
 
 	schedules.push_back(schedule);
 	cout << "Operation successful." << endl;
-	Pause();
+	Pause(45,11);
 }
 
 void EditASchedule(const vector<Course> &courses, vector<Schedule> &schedules) {
@@ -204,7 +204,7 @@ void EditASchedule(const vector<Course> &courses, vector<Schedule> &schedules) {
 	}
 	if (iSchedule == schedules.size()) {
 		cout << "Can not find schedule with given course code, year, semester and class." << endl;
-		Pause();
+		Pause(45,6);
 		return;
 	}
 
@@ -268,14 +268,14 @@ void EditASchedule(const vector<Course> &courses, vector<Schedule> &schedules) {
 	}
 	else if (action == "0") {
 		cout << "Operation aborted." << endl;
-		Pause();
+		Pause(45,17);
 		return;
 	}
 
 	string s = findLecturer(courses, editedSchedule);
 	if (s == "N/A") {
 		cout << "Can not find course with edited course code, year and semester." << endl;
-		Pause();
+		Pause(45,17);
 		return;
 	}
 
@@ -284,7 +284,7 @@ void EditASchedule(const vector<Course> &courses, vector<Schedule> &schedules) {
 
 	schedules[iSchedule] = editedSchedule;
 	cout << "Operation successful." << endl;
-	Pause();
+	Pause(45,17);
 }
 
 void RemoveASchedule(vector<Schedule> &schedules) {
@@ -311,13 +311,13 @@ void RemoveASchedule(vector<Schedule> &schedules) {
 	}
 	if (iSchedule == schedules.size()) {
 		cout << "Can not find schedule with given course code, year, semester and class." << endl;
-		Pause();
+		Pause(45,6);
 		return;
 	}
 
 	schedules.erase(schedules.begin() + iSchedule);
 	cout << "Operation successful." << endl;
-	Pause();
+	Pause(45,6);
 }
 
 void ViewSchedulesStaff(vector<Schedule> &schedules) {
@@ -343,5 +343,5 @@ void ViewSchedulesStaff(vector<Schedule> &schedules) {
 		}
 	}
 
-	Pause();
+	Pause(45,4+schedules.size());
 }

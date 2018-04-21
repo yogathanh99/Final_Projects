@@ -35,7 +35,7 @@ void CheckIn(User currentUser, vector<Course> courses, vector<Presence> &presenc
 			}
 			if (checkedIn) {
 				cout << "Already checked in." << endl;
-				Pause();
+				Pause(45,6);
 				return;
 			}
 
@@ -47,12 +47,12 @@ void CheckIn(User currentUser, vector<Course> courses, vector<Presence> &presenc
 			checkin.week = week;
 			presences.push_back(checkin);
 			cout << "Check in successfully." << endl;
-			Pause();
+			Pause(45,6);
 			return;
 		}
 	}
 	cout << "There's something wrong, can't check in, please retry." << endl;
-	Pause();
+	Pause(45,6);
 }
 
 void ViewCheckInResult(User currentUser, vector<Presence> &presences) {
@@ -70,7 +70,7 @@ void ViewCheckInResult(User currentUser, vector<Presence> &presences) {
 		}
 	}
 
-	Pause();
+	Pause(45,20);
 }
 
 void ViewScore(User currentUser, vector<Score> &scores) {
@@ -104,12 +104,12 @@ void ViewScore(User currentUser, vector<Score> &scores) {
 			cout << setw(10) << scores[i].labScore << "|";
 			cout << setw(10) << scores[i].finalScore << "|";
 			cout << setw(10) << scores[i].totalScore << endl;
-			Pause();
+			Pause(45,13);
 			return;
 		}
 	}
 	cout << "Can't find the course, please retry." << endl;
-	Pause();
+	Pause(45,5);
 }
 
 
@@ -133,5 +133,5 @@ void ViewScheduleStudent(User currentUser, vector<Schedule> &schedules) {
 		}
 	}
 
-	Pause();
+	Pause(45,3+schedules.size());
 }

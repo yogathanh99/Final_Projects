@@ -9,7 +9,7 @@ void ImportScore(vector<Score> &scores) {
 	fin.open("score.csv");
 	if (!fin.is_open()) {
 		cout << "No csv file with such path was found. Please try again." << endl;
-		Pause();
+		Pause(45,2);
 		return;
 	}
 
@@ -51,7 +51,7 @@ void SearchAndViewScoreboard(vector<Score> scores) {
 			cout << endl;
 		}
 	}
-	Pause();
+	Pause(45,scores.size()+2);
 }
 
 void ExportScoreboard(vector<Score> scores) {
@@ -86,5 +86,5 @@ void ExportScoreboard(vector<Score> scores) {
 	else {
 		cout << "No course code" << endl;
 	}
-	Pause();
+	Pause(45,5);
 }

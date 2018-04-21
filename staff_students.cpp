@@ -1,4 +1,5 @@
 #include "staff_students.h"
+#include "UI.h"
 
 void ImportStudentFromFile(vector<User> &users)
 {
@@ -12,7 +13,7 @@ void ImportStudentFromFile(vector<User> &users)
 	if (!fin.is_open())
 	{
 		cout << "No csv file with such path was found. Please try again." << endl;
-		Pause();
+		Pause(45,3);
 		return;
 	}
 
@@ -40,8 +41,9 @@ void ImportStudentFromFile(vector<User> &users)
 	}
 	fin.close();
 
+	gotoxy(45, 11);
 	cout << "Succesfully imported " << studentCount << " new students." << endl;
-	Pause();
+	Pause(45,3);
 }
 
 void OutputStudentToAnotherFile(string path, vector<User> users)
@@ -53,6 +55,7 @@ void OutputStudentToAnotherFile(string path, vector<User> users)
 		cout << "File '" << path << "' not open" << endl;
 		return;
 	}
+
 	for (int i = 0; i < users.size(); ++i)
 	{
 		fout << users[i]._class << ',' << users[i].username << ',' << users[i].fullName << endl;
@@ -79,7 +82,7 @@ void AddStudent(vector<User> &users) {
 	users.push_back(student);
 	
 	cout << "Successfully added" << endl;
-	Pause();
+	Pause(45,7);
 }
 
 void EditExistStudent(vector<User> &users) {
@@ -113,7 +116,7 @@ void EditExistStudent(vector<User> &users) {
 			getline(cin, fullname);
 			users[i].fullName = fullname;
 			cout << "Changed successfully" << endl;
-			Pause();
+			Pause(45,9);
 		}
 
 		else if (pick == "1") {
@@ -121,37 +124,37 @@ void EditExistStudent(vector<User> &users) {
 			getline(cin, mail);
 			users[i].email = mail;
 			cout << "Changed Successfully" << endl;
-			Pause();
+			Pause(45,9);
 		}
 		else if (pick == "2") {
 			cout << "Input mobile phone: ";
 			getline(cin, phone);
 			users[i].mobilePhone = phone;
 			cout << "Changed Successfully" << endl;
-			Pause();
+			Pause(45,9);
 		}
 		else if (pick == "3") {
 			cout << "Input new password: ";
 			getline(cin, password);
 			users[i].password = password;
 			cout << "Changed Successfully" << endl;
-			Pause();
+			Pause(45,9);
 		}
 		else if (pick == "4") {
 			cout << "Input new class: ";
 			getline(cin, _class);
 			users[i]._class = _class;
 			cout << "Changed Successfully" << endl;
-			Pause();
+			Pause(45,9);
 		}
 		else {
 			cout << "Entered action is not legit. Please try again." << endl;
-			Pause();
+			Pause(45,8);
 		}
 	}
 	else {
 		cout << "No student with given ID found" << endl;
-		Pause();
+		Pause(45,8);
 	}
 }
 
@@ -171,7 +174,7 @@ void ChangeClassStudent(vector <User> &users)
 
 	if (pick == 0) {
 		cout << "Action cancelled." << endl;
-		Pause();
+		Pause(45,6);
 	}
 	else if (pick == 1) {
 		cout << "Input old class: ";
@@ -182,7 +185,7 @@ void ChangeClassStudent(vector <User> &users)
 		for (int i = 0; i < users.size(); ++i)
 			if (users[i]._class == _oldclass) users[i]._class = _class;
 		cout << "Changed successfully" << endl;
-		Pause();
+		Pause(45,8);
 	}
 	else if (pick == 2)
 	{
@@ -204,11 +207,11 @@ void ChangeClassStudent(vector <User> &users)
 			getline(cin, _class);
 			users[i]._class = _class;
 			cout << "Changed successfully" << endl;
-			Pause();
+			Pause(45,8);
 		}
 		else {
 			cout << "No student with given ID found" << endl;
-			Pause();
+			Pause(45,5);
 		}
 	}
 }
@@ -221,7 +224,7 @@ void RemoveStudent(vector<User> &users) {
 		if (users[i].username == ID) users.erase(users.begin() + i);
 	}
 	cout << "Changed successfully" << endl;
-	Pause();
+	Pause(45,3);
 }
 
 void View_Class_List(vector<User> users)
@@ -242,7 +245,7 @@ void View_Class_List(vector<User> users)
 				cout << "Class: " << users[i]._class << endl;
 		}
 	}
-	Pause();
+	Pause(45,users.size()+1);
 }
 
 void ViewStudentList(vector<User> users)
@@ -257,5 +260,5 @@ void ViewStudentList(vector<User> users)
 		if (_class == users[i]._class)
 			cout << users[i].username << " " << users[i].fullName << endl;
 	}
-	Pause();
+	Pause(45,2+users.size());
 }
